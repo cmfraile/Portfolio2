@@ -4,11 +4,16 @@
     display: flex
     justify-content: center
     align-items: center
+    a
+        text-decoration: none
+        margin: 0px
+        padding: 0px
     .opcionweb,.opcionrrss
         cursor: pointer
     .opcionweb
         margin: 0px 20px
         padding: 0px 20px
+        padding-bottom: 5px
         min-height: 10vh
         display: flex
         justify-content: center
@@ -27,3 +32,10 @@
         &:hover
             i
                 color: red
+.activa
+    div
+        border-top: 5px solid yellow
+        color: yellow
+        &:hover
+            border-top: 5px solid yellow !important
+            padding-bottom: 5px
