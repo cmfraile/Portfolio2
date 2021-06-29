@@ -6,11 +6,13 @@ import { MainComponent } from './componentes/main/main.component';
 import { NavegacionComponent } from './componentes/navegacion/navegacion.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { TrabajosComponent } from './componentes/trabajos/trabajos.component';
+import { RrssComponent } from './componentes/rrss/rrss.component';
 
 const routes: Routes = [
   {path:'',component:MainComponent},
   {path:'perfil',component:PerfilComponent},
   {path:'trabajos',component:TrabajosComponent},
+  {path:'rrss',component:RrssComponent},
   {path:'**',redirectTo:'',pathMatch:'full'}
 ];
 
@@ -20,7 +22,8 @@ const routes: Routes = [
     MainComponent,
     NavegacionComponent,
     PerfilComponent,
-    TrabajosComponent
+    TrabajosComponent,
+    RrssComponent
   ],
   imports: [
     BrowserModule,
