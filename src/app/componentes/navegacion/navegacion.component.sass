@@ -3,8 +3,10 @@
     min-width: 100vw
     margin: 0px
     display: flex
+    flex-wrap: wrap
+    flex-direction: row
     justify-content: center
-    align-items: center
+    align-items: flex-start
     a
         text-decoration: none
         margin: 0px
@@ -12,9 +14,7 @@
     .opcionweb,.opcionrrss
         cursor: pointer
     .opcionweb
-        margin: 0px 20px
-        padding: 0px 20px
-        min-height: 10vh
+        padding: 20px
         display: flex
         justify-content: center
         align-items: center
@@ -36,6 +36,13 @@
             border-top: 2px solid yellow !important
             color: yellow
 
-@media (max-width:650px)
-    a
-        min-width: 50%
+@media (max-width:660px)
+    .bloquenav
+        .activa
+            background-color: purple
+            div
+                border: none !important
+        a
+            min-width: 50%
+
+    
