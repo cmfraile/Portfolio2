@@ -1,3 +1,13 @@
+$transborde : 2px solid rgba(255,255,255,0.5)
+
+.tarjetafor,.tarjetaxp
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    min-width: 100%
+    min-height: 20vh
+    max-height: 400px
+    margin: 10px 0px
 .col,.perfilc
     margin: 0px
     padding: 0px
@@ -15,16 +25,9 @@
     .vacio
         min-width: 20%
     .tarjetaxp
-        display: flex
-        flex-direction: row
-        flex-wrap: wrap
-        min-width: 100%
-        min-height: 20vh
-        max-height: 400px
-        margin: 10px 0px
         .puesto,.ano,.duracion,.lugar
-            min-height: 25%
-            max-height: 25%
+            min-height: 20%
+            max-height: 20%
             padding: 5px
             display: flex
             justify-content: center
@@ -33,18 +36,50 @@
             max-width: 33.3%
             min-width: 33.3%
         .puesto
-            background-color: red
+            border-bottom: $transborde
             min-width: 100%
         .ano
-            background-color: blue
-        .duracion
-            background-color: yellow
+            border-right: $transborde
         .lugar
-            background-color: green
+            border-left: $transborde
         .descripcion
-            background-color: purple
             min-width: 100%
-            min-height: 50%
+            min-height: 60%
             padding: 10px
+            text-align: justify
+    .tarjetafor
+        .periodo,.lugar,.formacion
+            display: flex
+            justify-content: center
+            align-items: center
+        .periodo,.lugar
+            min-height: 40%
+            min-height: 40%
+        .formacion
+            min-width: 100%
+            min-height: 60%
+            padding: 5px
+            text-align: justify
+            border-bottom: $transborde
+        .periodo
+            min-width: 30%
+            border-right: $transborde  
+        .lugar
+            min-width: 70%
+    .tarjetainteres
+        min-width: 100%
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        align-items: center
+        justify-content: center
+        .dato
+            min-width: 40%
+            max-width: 50px
+            border-bottom: 2px solid white
+            border-right: 2px solid white
+            margin: 10px
+            padding: 10px
+
 
     
