@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FondoeventoService } from 'src/app/servicios/fondoevento.service';
 
 @Component({
   selector: 'app-main',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.sass']
 })
 export class MainComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor(){}
 
   ngOnInit(): void {
   }
-
+  
 }

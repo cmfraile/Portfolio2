@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FondoeventoService } from 'src/app/servicios/fondoevento.service';
 
 @Component({
   selector: 'app-perfil',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor() { }
+  constructor(){}
 
   ngOnInit(): void {
   }
