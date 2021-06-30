@@ -15,7 +15,7 @@ $transborde : 2px solid rgba(255,255,255,0.5)
         flex-direction: column
         .tarjeta
             margin: 10px 0px
-            max-height: 30vh
+            min-height: 25vh
             max-width: 80%
             display: flex
             justify-content: center
@@ -46,8 +46,10 @@ $transborde : 2px solid rgba(255,255,255,0.5)
         min-width: 50%
         max-width: 50%
     .descripcion
-        padding: 5px
+        padding: 10px
         min-height: 80%
+        max-height: 80%
+        text-align: justify
     .titulo,.releaseordev
         border-bottom: $transborde
     .autor,.link
@@ -71,7 +73,7 @@ $transborde : 2px solid rgba(255,255,255,0.5)
 
 @media ( max-width:660px )
     .trabajosc
-        max-height: 120vh
+        min-height: 120vh
         .tarjeta
             min-height: 25vh
             margin: 30px 0px !important
