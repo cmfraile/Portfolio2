@@ -4,17 +4,12 @@ $transborde : 2px solid rgba(255,255,255,0.5)
     display: flex
     justify-content: flex-start
     align-items: center
-    .fototar
-        display: flex
-        justify-content: center
-        align-items: center
-        margin: 0px
-        padding: 0px
 .trabajosc
     min-width: 100%
     max-height: 90vh
     overflow-y: scroll
     .contenido
+        margin-top: 15px
         min-width: 75%
         min-height: 90vh
         flex-direction: column
@@ -28,11 +23,10 @@ $transborde : 2px solid rgba(255,255,255,0.5)
             overflow: hidden
             .fototar
                 border-right: $transborde
+                background-size: cover
+                background-position: center
                 min-height: 100%
-                max-width: 30%
-                img
-                    max-height: 100%
-                    max-width: 100%
+                min-width: 25%
             .contenidotar
                 min-height: 100%
                 min-width: 70%
@@ -60,4 +54,37 @@ $transborde : 2px solid rgba(255,255,255,0.5)
         border-top: $transborde
     .titulo,.autor
         border-right: $transborde
+
+@media (max-width:1120px)
+    .trabajosc
+        .vacio
+            display: hidden
+        .contenido
+            min-width: 100%
+    
+@media (max-width:800px)
+    .trabajosc
+        .contenido
+            padding: 0px 15px
+            .tarjeta
+                min-width: 95%
+
+@media ( max-width:660px )
+    .trabajosc
+        max-height: 120vh
+        .tarjeta
+            min-height: 40vh
+            margin: 30px 0px
+        .fototar
+            display: none
+        .titulo,.releaseordev,.autor,.link
+            min-height: 20%
+            max-height: 20%
+            padding: 0px
+            margin: 0px
+        .descripcion
+            min-height: 60%
+            max-height: 60%
+            padding: 0px
+            margin: 0px
     
