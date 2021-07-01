@@ -1,19 +1,25 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { distinctUntilChanged , tap , map } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
+import { distinctUntilChanged , tap , map, combineAll } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FondoeventoService {
 
-  sub$ = new BehaviorSubject<number>(document.documentElement.clientWidth);
-  todo$ = this.sub$.pipe(
-    map(resp => this.numerotest(resp)),
+  //Observable de responsividad:
+  subres$ = new BehaviorSubject<number>(document.documentElement.clientWidth);
+  obsres$ = this.subres$.pipe(
+    map(resp => this.resnumero(resp)),
     distinctUntilChanged()
   );
+  //Observable de fondo:
+  subwall$ = new BehaviorSubject<string>(window.location.pathname);
 
-  numerotest(arg:number){
+  //Conjunto:
+  superobs$ = combineLatest([this.obsres$,this.subwall$]);
+
+  resnumero(arg:number){
     let x:number = arg; let caso!:number;
     switch(true){
       case x >= 1120 : caso = 5 ; break ;
@@ -26,10 +32,9 @@ export class FondoeventoService {
   }
   
   constructor(){
-    const prueba = () => {
-      this.sub$.next(document.documentElement.clientWidth);
-    }
+    const prueba = () => {this.subres$.next(document.documentElement.clientWidth);}
     window.addEventListener("resize",prueba);
+    this.superobs$.subscribe(console.log);
   }
 
   /*

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FondoeventoService } from 'src/app/servicios/fondoevento.service';
 
 @Component({
   selector: 'app-trabajos',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrabajosComponent implements OnInit {
 
-  constructor() { }
+  constructor( private _fe:FondoeventoService ){}
 
   ngOnInit(): void {
+    this._fe.subwall$.next(window.location.pathname);
   }
 
 }

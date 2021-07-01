@@ -10,10 +10,10 @@ export class MainComponent implements OnInit {
   
   caso:number = 0;
   
-  constructor( private _fe:FondoeventoService ){
-    this._fe.todo$.subscribe();
-  }
+  constructor( private _fe:FondoeventoService ){}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._fe.subwall$.next(window.location.pathname);
+  }
   
 }

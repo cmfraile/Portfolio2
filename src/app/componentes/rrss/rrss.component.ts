@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { FondoeventoService } from 'src/app/servicios/fondoevento.service';
 
 @Component({
   selector: 'app-rrss',
@@ -7,20 +8,11 @@ import { Subject } from 'rxjs';
   styleUrls: ['./rrss.component.sass']
 })
 export class RrssComponent implements OnInit {
-
-  test$ = new Subject<number>();
-  valor:number = 15;
   
-  constructor(){
-    this.test$.subscribe(console.log);
-  }
+  constructor( private _fe:FondoeventoService ){}
 
   ngOnInit(): void {
-  }
-
-  testeando(){
-    console.log("Entra en la funcion")
-    this.test$.next(20);
+    this._fe.subwall$.next(window.location.pathname);
   }
 
 }
