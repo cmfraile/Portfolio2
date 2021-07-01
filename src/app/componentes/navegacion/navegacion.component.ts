@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './navegacion.component.html',
   styleUrls: ['./navegacion.component.sass']
 })
-export class NavegacionComponent implements OnInit {
+export class NavegacionComponent implements OnInit{
 
   constructor(private _r:Router){}
 

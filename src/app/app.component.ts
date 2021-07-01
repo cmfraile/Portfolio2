@@ -1,6 +1,6 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { FondoeventoService } from './servicios/fondoevento.service';
-import { tap } from 'rxjs/operators';
+import { map , tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +8,12 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./app.component.sass']
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'portfolio2';
   wallpapa!:string;
   
   mapwp(resp:[number,string]){
-    let caso:string = "url(../assets/img/fotos/";
+    let caso:string = "url('../assets/img/fotos/";
     if(resp[0] >= 5){
       switch(resp[1]){
         case "/" : caso += this._fe.imgurl.about.pic ; break ;
@@ -29,37 +29,18 @@ export class AppComponent {
         case "/rrss" : caso += this._fe.imgurl.rrss.subpic ; break ;
       }
     }
-    caso += ".jpg);";
-    return caso;
+    caso += ".jpg');";
+    return caso
   }
 
-  constructor( private _fe:FondoeventoService){
+  constructor( private _fe:FondoeventoService , private _cdr:ChangeDetectorRef){
     this._fe.superobs$.pipe(
-      tap(resp => {
-        this.wallpapa = this.mapwp(resp);
-        console.log(this.mapwp(resp));
-      })
-    ).subscribe();
+      map(resp => this.mapwp(resp)),
+      tap(console.log),
+    ).subscribe(resp => this.wallpapa = resp);
   }
-}
 
-/*
-export class AppComponent {
-  title = 'portfolio2';
-  wallpapa!:string;
-  constructor( private _fe:FondoeventoService ){
-    const restest = (resp:[number,string]) => {
-      let caso!:string;
-      if(resp[0] >= 5){
-        caso = "url(../assets/img/fototest.jpg)"
-      } else {
-        caso = "url(../assets/img/fototestsujeto.jpg)"
-      }
-      return caso;
-    }
-    this._fe.superobs$.pipe(
-      tap(resp => this.wallpapa = restest(resp))
-    ).subscribe()
+  ngAfterViewInit(){
+    this._cdr.detectChanges();
   }
 }
-*/

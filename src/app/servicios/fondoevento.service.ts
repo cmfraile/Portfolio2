@@ -45,7 +45,6 @@ export class FondoeventoService {
   constructor(){
     const prueba = () => {this.subres$.next(document.documentElement.clientWidth);}
     window.addEventListener("resize",prueba);
-    this.superobs$.subscribe(console.log);
   }
 
 }
