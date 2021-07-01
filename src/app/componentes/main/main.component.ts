@@ -11,7 +11,7 @@ export class MainComponent implements OnInit {
   caso:number = 0;
   
   constructor( private _fe:FondoeventoService ){
-    this._fe.obstamanio$.subscribe(console.log)
+    this._fe.todo$.subscribe();
   }
 
   ngOnInit(): void {}

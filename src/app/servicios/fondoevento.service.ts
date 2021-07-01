@@ -7,9 +7,12 @@ import { distinctUntilChanged , tap , map } from 'rxjs/operators';
 })
 export class FondoeventoService {
 
-  obstamanio$ = new BehaviorSubject<number>(document.documentElement.clientWidth);
+  sub$ = new BehaviorSubject<number>(document.documentElement.clientWidth);
+  todo$ = this.sub$.pipe(
+    map(resp => this.numerotest(resp)),
+    distinctUntilChanged()
+  );
 
-  /*
   numerotest(arg:number){
     let x:number = arg; let caso!:number;
     switch(true){
@@ -21,11 +24,10 @@ export class FondoeventoService {
     }
     return caso;
   }
-  */
   
   constructor(){
     const prueba = () => {
-      this.obstamanio$.next(document.documentElement.clientWidth);
+      this.sub$.next(document.documentElement.clientWidth);
     }
     window.addEventListener("resize",prueba);
   }
