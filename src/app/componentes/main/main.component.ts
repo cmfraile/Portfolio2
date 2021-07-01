@@ -8,9 +8,12 @@ import { FondoeventoService } from 'src/app/servicios/fondoevento.service';
 })
 export class MainComponent implements OnInit {
   
-  constructor(){}
-
-  ngOnInit(): void {
+  caso:number = 0;
+  
+  constructor( private _fe:FondoeventoService ){
+    this._fe.obstamanio$.subscribe(console.log)
   }
+
+  ngOnInit(): void {}
   
 }
