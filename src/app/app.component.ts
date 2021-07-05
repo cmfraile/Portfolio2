@@ -8,7 +8,7 @@ import { map , tap } from 'rxjs/operators';
   styleUrls: ['./app.component.sass']
 })
 
-export class AppComponent implements AfterViewInit {
+export class AppComponent{
   title = 'portfolio2';
   wallpapa!:string;
   
@@ -33,14 +33,10 @@ export class AppComponent implements AfterViewInit {
     return caso
   }
 
-  constructor( private _fe:FondoeventoService , private _cdr:ChangeDetectorRef){
+  constructor( private _fe:FondoeventoService){
     this._fe.superobs$.pipe(
       map(resp => this.mapwp(resp)),
       tap(console.log),
     ).subscribe(resp => this.wallpapa = resp);
-  }
-
-  ngAfterViewInit(){
-    this._cdr.detectChanges();
   }
 }

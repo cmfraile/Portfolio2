@@ -7,16 +7,12 @@ import { FondoeventoService } from 'src/app/servicios/fondoevento.service';
   templateUrl: './rrss.component.html',
   styleUrls: ['./rrss.component.sass']
 })
-export class RrssComponent implements OnInit , AfterViewInit {
+export class RrssComponent implements OnInit{
   
-  constructor( private _fe:FondoeventoService , private _cdr:ChangeDetectorRef ){}
+  constructor( private _fe:FondoeventoService){}
 
   ngOnInit(): void {
     this._fe.subwall$.next(window.location.pathname);
-  }
-
-  ngAfterViewInit(){
-    this._cdr.detectChanges();
   }
 
 }

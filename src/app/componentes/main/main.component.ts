@@ -6,17 +6,13 @@ import { FondoeventoService } from 'src/app/servicios/fondoevento.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.sass']
 })
-export class MainComponent implements OnInit , AfterViewInit {
+export class MainComponent implements OnInit{
   
   caso:number = 0;
   
-  constructor( private _fe:FondoeventoService , private _cdr:ChangeDetectorRef ){}
+  constructor( private _fe:FondoeventoService){}
 
   ngOnInit(): void {
     this._fe.subwall$.next(window.location.pathname);
-  }
-
-  ngAfterViewInit(){
-    this._cdr.detectChanges();
   }
 }

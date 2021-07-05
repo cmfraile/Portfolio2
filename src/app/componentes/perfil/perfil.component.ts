@@ -6,16 +6,12 @@ import { FondoeventoService } from 'src/app/servicios/fondoevento.service';
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.sass']
 })
-export class PerfilComponent implements OnInit , AfterViewInit {
+export class PerfilComponent implements OnInit{
 
-  constructor( private _fe:FondoeventoService , private _cdr :ChangeDetectorRef ){}
+  constructor( private _fe:FondoeventoService){}
 
   ngOnInit(): void {
     this._fe.subwall$.next(window.location.pathname);
-  }
-
-  ngAfterViewInit(){
-    this._cdr.detectChanges();
   }
 
 }
