@@ -1,6 +1,6 @@
-import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FondoeventoService } from './servicios/fondoevento.service';
-import { map , tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { map , tap } from 'rxjs/operators';
 
 export class AppComponent{
   title = 'portfolio2';
-  wallpapa!:string;
+
   
   mapwp(resp:[number,string]){
     let caso:string = "url('../assets/img/fotos/";
@@ -33,10 +33,20 @@ export class AppComponent{
     return caso
   }
 
+  constructor( private _fe:FondoeventoService ){
+    this._fe.superobs$.pipe(
+      map(resp => this.mapwp(resp)),
+    ).subscribe(resp => {
+      //this.padre.nativeElement. = resp
+
+    });
+  }
+
+  /*
   constructor( private _fe:FondoeventoService){
     this._fe.superobs$.pipe(
       map(resp => this.mapwp(resp)),
-      tap(console.log),
-    ).subscribe(resp => this.wallpapa = resp);
+    ).subscribe(console.log);
   }
+  */
 }
