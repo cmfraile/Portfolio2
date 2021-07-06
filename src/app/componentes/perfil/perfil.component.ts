@@ -1,5 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FondoeventoService } from 'src/app/servicios/fondoevento.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-perfil',
@@ -8,10 +7,8 @@ import { FondoeventoService } from 'src/app/servicios/fondoevento.service';
 })
 export class PerfilComponent implements OnInit{
 
-  constructor( private _fe:FondoeventoService){}
+  constructor(){}
 
-  ngOnInit(): void {
-    this._fe.subwall$.next(window.location.pathname);
-  }
+  ngOnInit(): void {}
 
 }
