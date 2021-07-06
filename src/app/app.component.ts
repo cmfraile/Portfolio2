@@ -1,4 +1,4 @@
-import { Component , ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FondoeventoService } from './servicios/fondoevento.service';
 
 @Component({
@@ -7,16 +7,15 @@ import { FondoeventoService } from './servicios/fondoevento.service';
   styleUrls: ['./app.component.sass']
 })
 
-export class AppComponent {
+export class AppComponent{
   
   title = 'portfolio2';
 
-  @ViewChild("mipadre") mipadre!:ElementRef;
-
-  constructor( private _fe:FondoeventoService , private _r2:Renderer2){
-    this._fe.superobs$.subscribe(resp => this.mapwp(resp));
+  constructor( private _fe:FondoeventoService){
+    //this._fe.superobs$.subscribe(resp => this.test = this.mapwp(resp))
   }
 
+  /*
   mapwp(resp:[number,string]){
     let caso:string = "url(../assets/img/fotos/";
     if(resp[0] >= 5){
@@ -35,18 +34,12 @@ export class AppComponent {
       }
     }
     caso += ".jpg);";
-    console.log(caso);
-    this._r2.setStyle(this.mipadre.nativeElement,'background-image',caso);
+    return caso;
+    }
+    */
+
+    test(){
+      return "url(../assets/img/fotos/dragon.jpg)"
+    }
+
   }
-
-  
-
-  /*
-  constructor( private _fe:FondoeventoService , private _r:Renderer2){
-    this._fe.superobs$.pipe(
-      map(resp => this.mapwp(resp)),
-    ).subscribe();
-  }
-  */
-
-}

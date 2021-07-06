@@ -1,5 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, OnInit, Renderer2} from '@angular/core';
 import { FondoeventoService } from 'src/app/servicios/fondoevento.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { FondoeventoService } from 'src/app/servicios/fondoevento.service';
 })
 export class RrssComponent implements OnInit{
   
-  constructor( private _fe:FondoeventoService){}
+  constructor( private _fe:FondoeventoService , private _r2:Renderer2){}
 
   ngOnInit(): void {
     this._fe.subwall$.next(window.location.pathname);
