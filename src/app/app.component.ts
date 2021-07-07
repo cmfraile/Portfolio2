@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FondoService } from './servicios/fondo.service';
 
@@ -8,14 +8,16 @@ import { FondoService } from './servicios/fondo.service';
   styleUrls: ['./app.component.sass']
 })
 
-export class AppComponent{
+export class AppComponent implements OnInit{
   
   title = 'portfolio2';
 
-  fondoclase:string = this._fs.desbarra(this._r.url);
+  fondoclase:string = "";
 
   constructor(private _fs:FondoService,private _r:Router){
     this._fs.sub$.subscribe(resp => this.fondoclase = resp)
   }
+
+  ngOnInit(){}
 
 }

@@ -12,13 +12,15 @@ export class NavegacionComponent implements OnInit{
   constructor(private _r:Router , private _fs:FondoService){}
 
   ngOnInit(): void {
-    //this._fs.sub$.next(this._fs.desbarra(this._r.url));
+    setTimeout(() => {
+      this._fs.sub$.next(this._fs.desbarra(this._r.url));
+    },5)
   }
 
   rutasubject(){
     setTimeout(() => {
       this._fs.sub$.next(this._fs.desbarra(this._r.url));
-    },10);
+    },5);
   }
 
 }
