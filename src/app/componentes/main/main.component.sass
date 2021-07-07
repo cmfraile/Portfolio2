@@ -37,15 +37,26 @@
         p
             font-size: 1.15rem
             font-weight: 700
+            text-align: justify
             margin: 5px 0px
         .primeralinea
             text-indent: 15%
 
 @media (max-width:1120px)
+    .vacio
+        max-height: 30vh
+    .sup
+        display: none
     .col
         min-width: 100%
     .wd
         min-width: 80%
+
+@media (max-width:660px)
+    .mainc
+        min-height: 100vh
+    .contenido
+        padding: 25px !important
 
 @media (max-width:450px)
     .wd
