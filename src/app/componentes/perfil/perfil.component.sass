@@ -1,24 +1,23 @@
 $transborde : 2px solid rgba(255,255,255,0.5)
 
+h3
+    margin: 25px 0px
+    border-bottom: 2px solid white
 .tarjetafor,.tarjetaxp
     display: flex
     flex-direction: row
     flex-wrap: wrap
-    min-width: 100%
-    min-height: 20vh
-    max-height: 400px
-    margin: 10px 0px
 .col,.perfilc
     margin: 0px
     padding: 0px
 .perfilc
     min-width: 100%
-    max-height: 88vh
+    max-height: 90vh
     overflow-y: scroll
     .contenido
         min-width: 40%
         padding: 10px 20px
-        margin: 15px 0px
+        margin-top: 10px
         display: flex
         flex-direction: column
         justify-content: flex-start
@@ -26,6 +25,9 @@ $transborde : 2px solid rgba(255,255,255,0.5)
     .vacio
         min-width: 20%
     .tarjetaxp
+        min-width: 100%
+        min-height: 20vh
+        max-height: 300px
         .puesto,.ano,.duracion,.lugar
             min-height: 15%
             max-height: 15%
@@ -49,19 +51,19 @@ $transborde : 2px solid rgba(255,255,255,0.5)
             padding: 10px
             text-align: justify
     .tarjetafor
-        min-height: 15vh !important
-        max-height: 300px !important
+        min-width: 100%
+        min-height: 10vh
+        max-height: 200px
+        margin: 10px 0px
         .periodo,.lugar,.formacion
             display: flex
             justify-content: center
             align-items: center
         .periodo,.lugar
-            min-height: 20%
-            min-height: 20%
+            min-height: 40%
         .formacion
             min-width: 100%
-            min-height: 80%
-            padding: 5px
+            min-height: 60%
             text-align: justify
             border-bottom: $transborde
         .periodo
@@ -89,7 +91,7 @@ $transborde : 2px solid rgba(255,255,255,0.5)
         display: none
 @media (max-width:800px)
     .perfilc
-        min-height: 120vh
+        min-height: 120vh !important
         .col
             min-width: 100vw
 @media (max-width:660px)
