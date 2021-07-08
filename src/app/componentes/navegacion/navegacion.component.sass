@@ -39,13 +39,22 @@
 
 @media (max-width:660px)
     .bloquenav
-        max-height: 25vh
-        margin-top: 10px
+        max-height: 50vh !important
+        margin-top: 30px
         .activa
             background-color: purple
             div
                 border: none !important
         a
             min-width: 50%
+
+@media (max-width:450px)
+    .bloquenav
+        a
+            min-width: 100%
+            max-height: 50px
+            display: flex
+            justify-content: center
+            align-items: center
 
     
