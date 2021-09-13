@@ -1,7 +1,8 @@
 <!-- <div class="padraso" style="background-image: url(../assets/img/fotos/dragon.jpg);"> -->
+<!-- <div class="padraso {{fondoclase}}"> -->
 <div class="padraso {{fondoclase}}">
     <div class="container">
     <router-outlet></router-outlet>
     </div>
-    <app-navegacion class="nav"></app-navegacion>
+    <app-navegacion [ngClass]="{'nav':true,'funado':adminav}" ></app-navegacion>
 </div>
