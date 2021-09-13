@@ -8,8 +8,12 @@ import { FondoService } from 'src/app/servicios/fondo.service';
   styleUrls: ['./navegacion.component.sass']
 })
 export class NavegacionComponent implements OnInit{
-
-  constructor(private _r:Router , private _fs:FondoService){}
+  
+  adminav:boolean = false;
+  
+  constructor(private _r:Router , private _fs:FondoService){
+    this._fs.sub$.subscribe(resp => (resp == 'admin') ? this.adminav = true : this.adminav = false);
+  }
 
   ngOnInit(): void {
     setTimeout(() => {
