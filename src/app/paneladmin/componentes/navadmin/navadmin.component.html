@@ -1,0 +1,14 @@
+<button mat-raised-button color='accent' [matMenuTriggerFor]="menu">Panel de administración</button>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>Sobre mi</button>
+    <button mat-menu-item [matMenuTriggerFor]="perfil">Perfil profesional</button>
+    <button mat-menu-item>Trabajos</button>
+</mat-menu>
+
+<mat-menu #perfil="matMenu">
+    <button mat-menu-item >Experiencia</button>
+    <button mat-menu-item >Formación</button>
+    <button mat-menu-item >Datos de interés</button>
+</mat-menu>
+
