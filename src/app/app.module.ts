@@ -8,6 +8,7 @@ import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { TrabajosComponent } from './componentes/trabajos/trabajos.component';
 import { RrssComponent } from './componentes/rrss/rrss.component';
 import { PaneladminModule, routes as rutaspaneladmin } from './paneladmin/paneladmin.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {path:'',component:MainComponent},
@@ -33,7 +34,8 @@ const routes: Routes = [
     PaneladminModule,
     RouterModule.forRoot(routes,{
       scrollPositionRestoration:'top',
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
