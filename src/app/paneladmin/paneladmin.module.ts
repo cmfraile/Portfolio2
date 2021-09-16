@@ -5,7 +5,12 @@ import { Routes,RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatMenuModule } from '@angular/material/menu';
 import { NavadminComponent } from './componentes/navadmin/navadmin.component';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { AboutComponent } from './componentes/about/about.component';
+import { TrabajosComponent } from './componentes/trabajos/trabajos.component';
+import { PexperienciaComponent } from './componentes/pexperiencia/pexperiencia.component';
+import { PformacionComponent } from './componentes/pformacion/pformacion.component';
+import { PdatosdeinteresComponent } from './componentes/pdatosdeinteres/pdatosdeinteres.component';
 
 export const routes : Routes = [
   { path:'',component:MainComponent }
@@ -15,7 +20,12 @@ export const routes : Routes = [
 @NgModule({
   declarations: [
     MainComponent,
-    NavadminComponent
+    NavadminComponent,
+    AboutComponent,
+    TrabajosComponent,
+    PexperienciaComponent,
+    PformacionComponent,
+    PdatosdeinteresComponent,
   ],
   imports: [
     CommonModule,
