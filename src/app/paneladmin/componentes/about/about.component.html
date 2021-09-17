@@ -1,13 +1,16 @@
 <div class="container">
     <div class="row">
         <div class="col formulario">
-            <form [formGroup]="forma" (ngSubmit)="botonform">
+            <form [formGroup]="forma">
                 <mat-form-field class="entradadato" appearance="outline">
                     <mat-label>Sobre mi</mat-label>
                     <textarea   matInput
                                 formControlName="areatexto"></textarea>
                 </mat-form-field>
-                <button mat-raised-button color="primary" (click)="botonform()" >Primary</button>
+                <div class="botonera">
+                    <button mat-raised-button color="primary" (click)="guardar()" >Guardar</button>
+                    <button mat-raised-button color="primary" (click)="borrar()" >Borrar</button>
+                </div>
             </form>
         </div>
     </div>

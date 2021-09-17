@@ -13,15 +13,18 @@ export class AboutComponent implements OnInit {
   
   constructor( private _fb:FormBuilder , public _td:TraerdataService ){
     this.forma = this._fb.group({
-      areatexto:''
+      areatexto:this._td.data.about
     })
   }
 
-  botonform(){
-    console.log(this.forma.value.areatexto);
+  guardar(){
+    console.log("Valor a guardar en base de datos",this.forma.value.areatexto);
   }
 
-  ngOnInit(): void {
+  borrar(){
+    this.forma.reset();
   }
+
+  ngOnInit(): void {}
 
 }
