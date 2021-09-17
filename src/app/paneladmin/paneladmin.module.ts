@@ -11,6 +11,9 @@ import { TrabajosComponent } from './componentes/trabajos/trabajos.component';
 import { PexperienciaComponent } from './componentes/pexperiencia/pexperiencia.component';
 import { PformacionComponent } from './componentes/pformacion/pformacion.component';
 import { PdatosdeinteresComponent } from './componentes/pdatosdeinteres/pdatosdeinteres.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
+
 
 export const routes : Routes = [
   { path:'',component:MainComponent }
@@ -32,7 +35,11 @@ export const routes : Routes = [
     BrowserModule,
     RouterModule,
     MatMenuModule,
-    MatButtonModule
-  ]
+    MatButtonModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers:[{provide:MatFormFieldModule}]
 })
 export class PaneladminModule { }

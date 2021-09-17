@@ -1,1 +1,17 @@
-<p>about works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col formulario">
+            <h2>Sobre mi</h2>
+            <form [formGroup]="forma" (ngSubmit)="botonform">
+                <mat-form-field appearance="outline">
+                    <mat-label>Textarea</mat-label>
+                    <textarea   matInput
+                                formControlName="areatexto"></textarea>
+                </mat-form-field>
+                <button type="submit">
+                    Save
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
