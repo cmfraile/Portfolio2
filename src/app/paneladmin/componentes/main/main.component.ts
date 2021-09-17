@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenucambioService } from '../../servicios/menucambio.service';
 
 @Component({
   selector: 'app-main',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  desplieguemenu!:string;
+  
+  constructor( private _mc:MenucambioService ){
+    this._mc.menuadmin$.subscribe(resp => this.desplieguemenu = resp);
+  }
 
   ngOnInit(): void {
   }

@@ -1,15 +1,15 @@
 <button mat-raised-button color='accent' [matMenuTriggerFor]="menu">Panel de administración</button>
 
 <mat-menu #menu="matMenu">
-    <button mat-menu-item>Sobre mi</button>
+    <button (click)="opcion('About')"  mat-menu-item>Sobre mi</button>
     <button mat-menu-item [matMenuTriggerFor]="perfil">Perfil profesional</button>
-    <button mat-menu-item>Trabajos</button>
-    <button mat-menu-item>Cerrar sesión</button>
+    <button (click)="opcion('Trabajos')"  mat-menu-item>Trabajos</button>
+    <button (click)="logout()"  mat-menu-item>Cerrar sesión</button>
 </mat-menu>
 
 <mat-menu #perfil="matMenu">
-    <button mat-menu-item >Experiencia</button>
-    <button mat-menu-item >Formación</button>
-    <button mat-menu-item >Datos de interés</button>
+    <button (click)="opcion('PerfilExperiencia')"  mat-menu-item >Experiencia</button>
+    <button (click)="opcion('PerfilFormacion')"  mat-menu-item >Formación</button>
+    <button (click)="opcion('PerfilDatos')"  mat-menu-item >Datos de interés</button>
 </mat-menu>
 
