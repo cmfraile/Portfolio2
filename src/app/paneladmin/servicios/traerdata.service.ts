@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 export class TraerdataService {
 
   data:any = {
-    about:'Lorem Ipsum tralali tralala'
+    about:'Lorem ipsum tralali, tralala.'
   }
   
-  constructor(){}
+  constructor() { }
 
 }

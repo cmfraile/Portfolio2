@@ -8,10 +8,13 @@
                     <textarea   matInput
                                 formControlName="areatexto"></textarea>
                 </mat-form-field>
-                <button type="submit">
-                    Save
-                </button>
+                <button mat-raised-button color="primary" (click)="botonform()" >Primary</button>
             </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <pre>{{forma.value|json}}</pre>
         </div>
     </div>
 </div>

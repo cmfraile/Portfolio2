@@ -1,1 +1,19 @@
-<p>pdatosdeinteres works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col formulario">
+            <form [formGroup]="forma" (ngSubmit)="botonform">
+                <mat-form-field appearance="fill">
+                    <mat-label>Dato de interés</mat-label>
+                    <input  matInput
+                            formControlName="datointeres">
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="botonform()" >Primary</button>             
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <pre>{{forma.value|json}}</pre>
+        </div>
+    </div>
+</div>

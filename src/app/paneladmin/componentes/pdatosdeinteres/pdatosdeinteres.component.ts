@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-pdatosdeinteres',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PdatosdeinteresComponent implements OnInit {
 
-  constructor() { }
+  forma:FormGroup;
+  
+  constructor( private _fb:FormBuilder ){
+    this.forma = this._fb.group({
+      datointeres:''
+    });
+  }
+
+  botonform(){
+    console.log("boton del formulario");
+  }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TraerdataService } from '../../servicios/traerdata.service';
 
 @Component({
   selector: 'app-about',
@@ -10,9 +11,9 @@ export class AboutComponent implements OnInit {
   
   forma:FormGroup;
   
-  constructor( private _fb:FormBuilder ){
+  constructor( private _fb:FormBuilder , private _td:TraerdataService ){
     this.forma = this._fb.group({
-      areatexto:''
+      areatexto:this._td.data.about
     })
   }
 
