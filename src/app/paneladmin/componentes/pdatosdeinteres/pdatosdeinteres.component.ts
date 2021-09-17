@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TraerdataService } from '../../servicios/traerdata.service';
 
 @Component({
   selector: 'app-pdatosdeinteres',
@@ -9,15 +10,20 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class PdatosdeinteresComponent implements OnInit {
 
   forma:FormGroup;
+  quejadato:boolean = false
   
-  constructor( private _fb:FormBuilder ){
+  constructor( private _fb:FormBuilder , public _td:TraerdataService ){
     this.forma = this._fb.group({
       datointeres:''
     });
   }
 
-  botonform(){
-    console.log("boton del formulario");
+  guardar(){
+    let input = this.forma.value.datointeres;
+    let flag:boolean = false;
+    if(input == ''){this.quejadato = true ; return};
+    this._td.data.datosinteres.forEach( (dato:string) => {if(dato == input){ flag = true ; this.quejadato = true }});
+    if(flag){return}else{this._td.data.datosinteres.push(input) ; this.quejadato = false};
   }
 
   ngOnInit(): void {

@@ -1,19 +1,25 @@
 <div class="container">
     <div class="row">
         <div class="col formulario">
-            <form [formGroup]="forma" (ngSubmit)="botonform">
-                <mat-form-field appearance="fill">
+            <form [formGroup]="forma">
+                <mat-form-field class="entradadato"  appearance="outline">
                     <mat-label>Dato de interés</mat-label>
                     <input  matInput
+                            color="warn"
                             formControlName="datointeres">
                 </mat-form-field>
-                <button mat-raised-button color="primary" (click)="botonform()" >Primary</button>             
+                <div class="botonera">
+                    <small class="errorentrada" *ngIf="this.quejadato" >El dato que intentaste introducir ya existe o no contiene nada.</small>
+                    <div class="blanco"></div>
+                    <button mat-raised-button color="primary" (click)="guardar()">Guardar dato de interés</button> 
+                </div>     
             </form>
         </div>
     </div>
+    <hr>
     <div class="row">
-        <div class="col">
-            <pre>{{forma.value|json}}</pre>
+        <div class="col tarjetainteres">
+            <div class="dato" *ngFor="let dato of this._td.data.datosinteres">{{dato}}</div>
         </div>
     </div>
 </div>
