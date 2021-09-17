@@ -1,10 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col formulario">
-            <h2>Sobre mi</h2>
             <form [formGroup]="forma" (ngSubmit)="botonform">
-                <mat-form-field appearance="outline">
-                    <mat-label>Textarea</mat-label>
+                <mat-form-field class="entradadato" appearance="outline">
+                    <mat-label>Sobre mi</mat-label>
                     <textarea   matInput
                                 formControlName="areatexto"></textarea>
                 </mat-form-field>
@@ -12,9 +11,11 @@
             </form>
         </div>
     </div>
+    <!--
     <div class="row">
         <div class="col">
             <pre>{{forma.value|json}}</pre>
         </div>
     </div>
+    -->
 </div>

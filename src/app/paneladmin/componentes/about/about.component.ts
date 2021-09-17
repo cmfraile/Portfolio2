@@ -11,14 +11,14 @@ export class AboutComponent implements OnInit {
   
   forma:FormGroup;
   
-  constructor( private _fb:FormBuilder , private _td:TraerdataService ){
+  constructor( private _fb:FormBuilder , public _td:TraerdataService ){
     this.forma = this._fb.group({
-      areatexto:this._td.data.about
+      areatexto:''
     })
   }
 
   botonform(){
-    console.log("botón del formulario");
+    console.log(this.forma.value.areatexto);
   }
 
   ngOnInit(): void {
