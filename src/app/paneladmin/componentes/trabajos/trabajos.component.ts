@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder , FormGroup } from '@angular/forms';
+import { trabajo } from '../../interfaces';
+import { TraerdataService } from '../../servicios/traerdata.service';
 
 @Component({
   selector: 'app-trabajos',
@@ -7,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrabajosComponent implements OnInit {
 
-  constructor() { }
+  forma:FormGroup;
+  trabajos:trabajo[] = this._td.data.trabajos;
+  
+  constructor( private _td:TraerdataService , private _fb:FormBuilder ){
+    this.forma = this._fb.group({
+      foto:'',nombre:'',descripcion:'',autor:'',ead:''
+    })
+  }
 
   ngOnInit(): void {
   }

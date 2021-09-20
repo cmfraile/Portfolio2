@@ -1,1 +1,43 @@
-<p>trabajos works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col formulario">
+            <form [formGroup]="forma">
+                <mat-form-field appearance="outline" class="entradato">
+                    <mat-label>Foto</mat-label>
+                    <input  matInput
+                            formControlName="foto">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="entradato">
+                    <mat-label>nombre</mat-label>
+                    <input  matInput
+                            formControlName="nombre">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="entradato">
+                    <mat-label>descripción</mat-label>
+                    <input  matInput
+                            formControlName="descripcion">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="entradato">
+                    <mat-label>autor</mat-label>
+                    <input  matInput
+                            formControlName="autor">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="entradato">
+                    <mat-label>enlace al proyecto</mat-label>
+                    <input  matInput
+                            formControlName="ead">
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col trabajos">
+            <div *ngFor="let trabajo of trabajos" class="tarjeta">
+                <p>{{trabajo.nombre}}</p>
+                <p>{{trabajo.descripcion}}</p>
+                <p>{{trabajo.descripcion}}</p>
+            </div>
+        </div>
+    </div>
+</div>
