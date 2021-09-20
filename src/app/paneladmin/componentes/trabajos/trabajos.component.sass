@@ -1,9 +1,7 @@
-.row
-    max-height: 40vh
+.sup
+    max-height: 60vh
 .funa
     display: none
-.trabajos
-    overflow-y: scroll
 .formulario
     display: flex
     flex-direction: column
@@ -15,7 +13,7 @@
         min-width: 99%
         textarea
             resize: none
-            min-height: 150px
+            min-height: 100px
     .enlace
         min-width: 60%
     .foto
@@ -28,4 +26,47 @@
         border: 1px solid white
     .botonaccion
         margin: 0px 10px
+.trabajos
+    overflow-y: scroll
+    max-height: 40vh
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    .trabajoitem
+        button
+            max-width: 10px
+            max-height: 10px
+        min-width: 45%
+        max-width: 45%
+        max-height: 150px
+        display: flex
+        flex-direction: row
+        flex-wrap: nowrap
+        margin: 10px
+        .foto
+            min-height: 100px
+            min-width: 100px
+            background-repeat: no-repeat
+            border-right: 2px solid white
+        .grupodatostring
+            display: flex
+            justify-content: center
+            align-items: center
+            flex-wrap: wrap
+            flex-direction: row
+            .nombre,.anio,.autor,.enlace
+                display: flex
+                justify-content: center
+                align-items: center
+                text-align: center
+                min-width: 50%
+                max-height: 20%
+            .descripcion
+                min-width: 100%
+                min-height: 60%
+                display: flex
+                text-align: justify
+                padding: 3px
+
+
 
