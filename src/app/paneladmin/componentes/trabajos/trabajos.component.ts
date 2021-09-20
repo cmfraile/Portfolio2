@@ -15,7 +15,7 @@ export class TrabajosComponent implements OnInit {
   
   constructor( private _td:TraerdataService , private _fb:FormBuilder ){
     this.forma = this._fb.group({
-      foto:'',nombre:'',descripcion:'',autor:'',ead:''
+      foto:'',nombre:'',descripcion:'',anio:'',autor:'',ead:''
     })
   }
 

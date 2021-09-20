@@ -10,6 +10,7 @@ import { RrssComponent } from './componentes/rrss/rrss.component';
 import { PaneladminModule, routes as rutaspaneladmin } from './paneladmin/paneladmin.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 const routes: Routes = [
   {path:'',component:MainComponent},
   {path:'perfil',component:PerfilComponent},

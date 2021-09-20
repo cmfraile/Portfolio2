@@ -14,6 +14,7 @@ import { PdatosdeinteresComponent } from './componentes/pdatosdeinteres/pdatosde
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule }  from '@angular/material/input';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 
 export const routes : Routes = [
@@ -40,7 +41,8 @@ export const routes : Routes = [
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule
   ]
 })
 export class PaneladminModule { }

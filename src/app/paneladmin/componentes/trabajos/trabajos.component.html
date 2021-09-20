@@ -2,31 +2,40 @@
     <div class="row">
         <div class="col formulario">
             <form [formGroup]="forma">
-                <mat-form-field appearance="outline" class="entradato">
-                    <mat-label>Foto</mat-label>
-                    <input  matInput
-                            formControlName="foto">
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="entradato">
+                <mat-form-field appearance="outline" class="dato nombre">
                     <mat-label>nombre</mat-label>
                     <input  matInput
                             formControlName="nombre">
                 </mat-form-field>
-                <mat-form-field appearance="outline" class="entradato">
-                    <mat-label>descripción</mat-label>
-                    <input  matInput
-                            formControlName="descripcion">
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="entradato">
+                <mat-form-field appearance="outline" class="dato autor">
                     <mat-label>autor</mat-label>
                     <input  matInput
                             formControlName="autor">
                 </mat-form-field>
-                <mat-form-field appearance="outline" class="entradato">
+                <mat-form-field appearance="outline" class="dato anio">
+                    <mat-label>año del proyecto</mat-label>
+                    <input  matInput
+                            formControlName="anio">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="dato descripcion">
+                    <mat-label>descripción</mat-label>
+                    <textarea   matInput
+                                formControlName="descripcion"></textarea>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="dato enlace">
                     <mat-label>enlace al proyecto</mat-label>
                     <input  matInput
                             formControlName="ead">
                 </mat-form-field>
+                <button mat-raised-button color="warn" class="botonaccion">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+                </button>
+                <button mat-raised-button color="warn" class="botonaccion">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+                </button>
+                <button mat-raised-button color="warn" class="botonaccion">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+                </button>
             </form>
         </div>
     </div>
