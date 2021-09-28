@@ -12,7 +12,8 @@ export class TraerdataService {
     datosinteres:['Dato de prueba','Otro dato de prueba','El tercer dato de prueba'],
     trabajos:[
       {
-        foto:'https://i.picsum.photos/id/864/200/200.jpg?hmac=enPW23d2MpTvv2RfL7CtuO_cKSvCg4DGCYtNPc4-48M',
+        ID:0,
+        foto:'https://picsum.photos/200',
         nombre:'Prueba1',
         descripcion:'Info de relleno',
         anio:'2017-2018',
@@ -20,7 +21,8 @@ export class TraerdataService {
         eap:'https://google.es'
       },
       {
-        foto:'https://i.picsum.photos/id/316/200/200.jpg?hmac=f0i62VkjVy8OPLP77Xf7mdZa3UBNlTOXFm9WpDMOiiA',
+        ID:1,
+        foto:'https://picsum.photos/200',
         nombre:'Prueba dos',
         descripcion:'Info de relleno para el segundo trabajo',
         anio:'2017-2018',
@@ -28,7 +30,8 @@ export class TraerdataService {
         eap:'https://google.es'
       },
       {
-        foto:'https://i.picsum.photos/id/1000/200/200.jpg?hmac=U6gBcO-m8lNXspqhLW17ugDZ1Z3cEcCQj07Wp9Nq7IQ',
+        ID:2,
+        foto:'https://picsum.photos/200',
         nombre:'Prueba III',
         descripcion:'Descripción extraordinaria del tercer trabajo',
         anio:'2017-2018',
@@ -36,7 +39,8 @@ export class TraerdataService {
         eap:'https://google.es'
       },
       {
-        foto:'https://i.picsum.photos/id/1000/200/200.jpg?hmac=U6gBcO-m8lNXspqhLW17ugDZ1Z3cEcCQj07Wp9Nq7IQ',
+        ID:3,
+        foto:'https://picsum.photos/200',
         nombre:'Prueba III',
         descripcion:'Descripción extraordinaria del tercer trabajo',
         anio:'2017-2018',
@@ -44,7 +48,8 @@ export class TraerdataService {
         eap:'https://google.es'
       },
       {
-        foto:'https://i.picsum.photos/id/1000/200/200.jpg?hmac=U6gBcO-m8lNXspqhLW17ugDZ1Z3cEcCQj07Wp9Nq7IQ',
+        ID:4,
+        foto:'https://picsum.photos/200',
         nombre:'Prueba III',
         descripcion:'Descripción extraordinaria del tercer trabajo',
         anio:'2017-2018',

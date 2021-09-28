@@ -25,9 +25,9 @@
                 <mat-form-field appearance="outline" class="dato enlace">
                     <mat-label>enlace al proyecto</mat-label>
                     <input  matInput
-                            formControlName="ead">
+                            formControlName="eap">
                 </mat-form-field>
-                <button class="botonaccion" title="Guardar"><i class="fas fa-pencil-alt"></i></button>
+                <button class="botonaccion" title="Guardar" (click)="formsave()"><i class="fas fa-pencil-alt"></i></button>
                 <button class="botonaccion" title="Limpiar"><i class="fas fa-eraser"></i></button>
                 <button class="botonaccion" title="Borrar"><i class="fas fa-times-circle"></i></button>
             </form>
@@ -36,9 +36,9 @@
     </div>
     <div class="row">
         <div class="col trabajos">
-            <div class="trabajoitem" *ngFor="let trabajo of trabajos">
+            <div class="trabajoitem" *ngFor="let trabajo of trabajos" (click)="formularioback(trabajo)">
                 <div class="grupofotodel">
-                    <div class="foto" style="background-image: url(https://picsum.photos/100);"></div>
+                    <div class="foto" style="background-image: url({{trabajo.foto}});"></div>
                 </div>
                 <div class="grupodatostring">
                     <div class="nombre">{{trabajo.nombre}}</div>

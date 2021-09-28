@@ -1,4 +1,5 @@
 export interface trabajo {
+    ID:number,
     foto:string,
     nombre:string,
     descripcion:string,
