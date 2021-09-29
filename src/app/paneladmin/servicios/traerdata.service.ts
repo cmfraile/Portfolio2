@@ -20,42 +20,6 @@ export class TraerdataService {
         autor:'Carlos Fraile',
         eap:'https://google.es'
       },
-      {
-        ID:1,
-        foto:'https://picsum.photos/200',
-        nombre:'Prueba dos',
-        descripcion:'Info de relleno para el segundo trabajo',
-        anio:'2017-2018',
-        autor:'Carlos Fraile',
-        eap:'https://google.es'
-      },
-      {
-        ID:2,
-        foto:'https://picsum.photos/200',
-        nombre:'Prueba III',
-        descripcion:'Descripción extraordinaria del tercer trabajo',
-        anio:'2017-2018',
-        autor:'Carlos Fraile',
-        eap:'https://google.es'
-      },
-      {
-        ID:3,
-        foto:'https://picsum.photos/200',
-        nombre:'Prueba III',
-        descripcion:'Descripción extraordinaria del tercer trabajo',
-        anio:'2017-2018',
-        autor:'Carlos Fraile',
-        eap:'https://google.es'
-      },
-      {
-        ID:4,
-        foto:'https://picsum.photos/200',
-        nombre:'Prueba III',
-        descripcion:'Descripción extraordinaria del tercer trabajo',
-        anio:'2017-2018',
-        autor:'Carlos Fraile',
-        eap:'https://google.es'
-      },
     ]
   }
 

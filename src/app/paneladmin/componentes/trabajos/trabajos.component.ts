@@ -12,7 +12,7 @@ export class TrabajosComponent implements OnInit {
 
   forma:FormGroup;
   trabajos:trabajo[] = this._td.data.trabajos;
-  trabajoseleccionado!:trabajo;
+  trabajoseleccionado!:trabajo|undefined;
   
   constructor( private _td:TraerdataService , private _fb:FormBuilder ){
     this.forma = this._fb.group({
@@ -21,30 +21,26 @@ export class TrabajosComponent implements OnInit {
   }
 
   formsave(){
-
     const oligofrenia = (curro:any):string => {
       return JSON.stringify(curro).split('').sort().join('');
     }
+  }
 
+  formclean(){
+    this.forma.reset();
+    this.trabajoseleccionado = undefined;
+  }
+
+  formerase(){
     if(this.trabajoseleccionado == undefined){return};
-
-    const {ID,...trabajo1} = this.trabajoseleccionado;
-    const trabajo2:trabajo = this.forma.value;
-
-    if(oligofrenia(trabajo1) == oligofrenia(trabajo2)){return}
-
-    let cambio = this._td.data.trabajos[this._td.data.trabajos.indexOf(this.trabajoseleccionado)];
-    console.log(cambio);
-    cambio.descripcion = trabajo2.descripcion;
-    console.log(cambio);
-
-    //this._td.data.trabajos[this._td.data.trabajos.indexOf(this.trabajoseleccionado)] = trabajo2;
-
+    let trabajoerase = this.trabajoseleccionado;
+    let indice = this.trabajos.indexOf(trabajoerase)
+    this.trabajos.splice(indice,1);
+    this.forma.reset();
   }
   
   formularioback(trabajo:trabajo){
     this.trabajoseleccionado = trabajo;
-    //console.log("Seleccionado:",trabajo);
     this.forma.setValue({
       nombre:`${trabajo.nombre}`,
       foto:`${trabajo.foto}`,

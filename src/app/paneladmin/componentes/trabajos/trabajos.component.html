@@ -28,8 +28,8 @@
                             formControlName="eap">
                 </mat-form-field>
                 <button class="botonaccion" title="Guardar" (click)="formsave()"><i class="fas fa-pencil-alt"></i></button>
-                <button class="botonaccion" title="Limpiar"><i class="fas fa-eraser"></i></button>
-                <button class="botonaccion" title="Borrar"><i class="fas fa-times-circle"></i></button>
+                <button class="botonaccion" title="Limpiar" (click)="formclean()" ><i class="fas fa-eraser"></i></button>
+                <button class="botonaccion" title="Borrar"  (click)="formerase()"><i class="fas fa-times-circle"></i></button>
             </form>
         </div>
         <hr>
