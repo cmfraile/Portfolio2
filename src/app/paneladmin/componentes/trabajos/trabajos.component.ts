@@ -22,34 +22,29 @@ export class TrabajosComponent implements OnInit {
   }
 
   formsave(){
+    
+    if(this.trabajoseleccionado == undefined){
+      const entrada:trabajo = {ID:UUID.createUUID(),...this.forma.value} ; entrada.foto = 'https://picsum.photos/200';
+      const {ID,foto,eap,...valores1} = entrada; let valores:any = valores1;
+      let caso:boolean = false;
+      for(let valor in valores){if(valores[valor] == ''){caso = true}};
+      if(caso !== false){return};
+      this.trabajos.push(entrada);
+      this.trabajoseleccionado = entrada;
+    } else {
+      let indice = this.trabajos.indexOf(this.trabajoseleccionado);
+      let { ID,foto,...cambios1 } = this.trabajoseleccionado; let cambios:any = cambios1;
+      let caso:boolean = false;
+      for(let valor in cambios){if(cambios[valor] == ''){caso = true}};
+      if(caso !== false){return};
+      const guardar = {ID,foto,...cambios};
+      this.trabajos.splice(indice,1);
+      this.trabajos.push(guardar);
+      this.trabajoseleccionado = guardar;
+    }
 
-   const todomenoseap = (trabajo:any) => {
-     let caso:boolean = true;
-      for(let dato in trabajo){
-       if(dato !== 'eap'){
-         if(trabajo[dato] == ''){
-          console.log("llego aqui") 
-          caso = false
-         }
-       }
-     }
-     return caso;
-   }
-   
-   const entrada:any = {ID:UUID.createUUID(),...this.forma.value};
-
-   if(this.trabajoseleccionado == undefined){  
-    if(todomenoseap(entrada)){return};
-    console.log("llego aqui VACIO")
-    let entradaya:trabajo = entrada;
-    this.trabajos.push(entradaya);
-   } else {
-    let indice = this.trabajos.indexOf(this.trabajoseleccionado);
-    if(todomenoseap(entrada)){return};
-    console.log("llego aqui LLENO")
-    this.trabajos.splice(indice,1);
-    this.trabajos.push(entrada);
-   }
+    this.trabajoseleccionado = undefined;
+    this.forma.reset();
 
   }
 
@@ -64,6 +59,7 @@ export class TrabajosComponent implements OnInit {
     let indice = this.trabajos.indexOf(trabajoerase)
     this.trabajos.splice(indice,1);
     this.forma.reset();
+    this.trabajoseleccionado = undefined;
   }
   
   formularioback(trabajo:trabajo){
