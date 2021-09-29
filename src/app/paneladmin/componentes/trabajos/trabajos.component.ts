@@ -23,18 +23,32 @@ export class TrabajosComponent implements OnInit {
 
   formsave(){
 
-   const todomenoseap = (trabajo:any) => {for(let dato in trabajo){if(dato !== 'eap'){if(dato == ''){return}}};}
+   const todomenoseap = (trabajo:any) => {
+     let caso:boolean = true;
+      for(let dato in trabajo){
+       if(dato !== 'eap'){
+         if(trabajo[dato] == ''){
+          console.log("llego aqui") 
+          caso = false
+         }
+       }
+     }
+     return caso;
+   }
+   
    const entrada:any = {ID:UUID.createUUID(),...this.forma.value};
 
-   if(this.trabajoseleccionado == undefined){
-     todomenoseap(entrada);
-     let entradaya:trabajo = entrada;
-     this.trabajos.push(entradaya);
+   if(this.trabajoseleccionado == undefined){  
+    if(todomenoseap(entrada)){return};
+    console.log("llego aqui VACIO")
+    let entradaya:trabajo = entrada;
+    this.trabajos.push(entradaya);
    } else {
-     let indice = this.trabajos.indexOf(this.trabajoseleccionado);
-     todomenoseap(entrada);
-     this.trabajos.splice(indice,1);
-     this.trabajos.push(entrada);
+    let indice = this.trabajos.indexOf(this.trabajoseleccionado);
+    if(todomenoseap(entrada)){return};
+    console.log("llego aqui LLENO")
+    this.trabajos.splice(indice,1);
+    this.trabajos.push(entrada);
    }
 
   }
