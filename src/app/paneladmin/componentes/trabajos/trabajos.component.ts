@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder , FormGroup } from '@angular/forms';
 import { trabajo } from '../../interfaces';
 import { TraerdataService } from '../../servicios/traerdata.service';
+import { UUID } from 'uuid-generator-ts';
 
 @Component({
   selector: 'app-trabajos',
@@ -21,12 +22,20 @@ export class TrabajosComponent implements OnInit {
   }
 
   formsave(){
-    const oligofrenia = (curro:any):string => {
-      return JSON.stringify(curro).split('').sort().join('');
-    }
-    if(this.trabajoseleccionado == undefined){
-      this.trabajos
-    };
+
+   const todomenoseap = (trabajo:any) => {for(let dato in trabajo){if(dato !== 'eap'){if(dato == ''){return}}};}
+   const entrada:any = {ID:UUID.createUUID(),...this.forma.value};
+
+   if(this.trabajoseleccionado == undefined){
+     todomenoseap(entrada);
+     let entradaya:trabajo = entrada;
+     this.trabajos.push(entradaya);
+   } else {
+     let indice = this.trabajos.indexOf(this.trabajoseleccionado);
+     todomenoseap(entrada);
+     this.trabajos.splice(indice,1);
+     this.trabajos.push(entrada);
+   }
 
   }
 
@@ -45,14 +54,8 @@ export class TrabajosComponent implements OnInit {
   
   formularioback(trabajo:trabajo){
     this.trabajoseleccionado = trabajo;
-    this.forma.setValue({
-      nombre:`${trabajo.nombre}`,
-      foto:`${trabajo.foto}`,
-      descripcion:`${trabajo.descripcion}`,
-      anio:`${trabajo.anio}`,
-      autor:`${trabajo.autor}`,
-      eap:`${trabajo.eap}`
-    });
+    let {ID,...curro} = this.trabajoseleccionado;
+    this.forma.setValue(curro);
   }
 
   ngOnInit(): void {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { UUID } from 'uuid-generator-ts';
 import { trabajo } from '../interfaces';
-
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class TraerdataService {
     datosinteres:['Dato de prueba','Otro dato de prueba','El tercer dato de prueba'],
     trabajos:[
       {
-        ID:0,
+        ID:UUID.createUUID(),
         foto:'https://picsum.photos/200',
         nombre:'Prueba1',
         descripcion:'Info de relleno',

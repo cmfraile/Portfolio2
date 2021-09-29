@@ -42,7 +42,7 @@ export const routes : Routes = [
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
   ]
 })
 export class PaneladminModule { }
