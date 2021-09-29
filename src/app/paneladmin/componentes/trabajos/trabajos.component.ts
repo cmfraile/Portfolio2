@@ -24,6 +24,10 @@ export class TrabajosComponent implements OnInit {
     const oligofrenia = (curro:any):string => {
       return JSON.stringify(curro).split('').sort().join('');
     }
+    if(this.trabajoseleccionado == undefined){
+      this.trabajos
+    };
+
   }
 
   formclean(){
