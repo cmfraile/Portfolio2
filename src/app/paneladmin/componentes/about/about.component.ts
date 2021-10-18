@@ -13,7 +13,9 @@ export class AboutComponent implements OnInit {
   
   constructor( private _fb:FormBuilder , public _td:TraerdataService ){
     this.forma = this._fb.group({
-      areatexto:this._td.data.about
+      areatexto:this._td.data.about,
+      nombre:'',
+      ocupacion:''
     })
   }
 

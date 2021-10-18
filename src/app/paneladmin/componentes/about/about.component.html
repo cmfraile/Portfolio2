@@ -7,6 +7,16 @@
                     <textarea   matInput
                                 formControlName="areatexto"></textarea>
                 </mat-form-field>
+                <mat-form-field class="datopeque" appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input  matInput
+                            formControlName="nombre">
+                </mat-form-field>
+                <mat-form-field class="datopeque" appearance="outline">
+                    <mat-label>Ocupacion</mat-label>
+                    <input  matInput
+                            formControlName="ocupacion">
+                </mat-form-field>
                 <div class="botonera">
                     <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
                     <button mat-raised-button color="primary" (click)="borrar()">Limpiar</button>
