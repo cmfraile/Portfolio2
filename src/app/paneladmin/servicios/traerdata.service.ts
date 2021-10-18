@@ -11,7 +11,7 @@ export class TraerdataService {
   data:{about:string,datosinteres:string[],trabajos:trabajo[]} = {
     about:'Lorem ipsum tralali, tralala.',
     datosinteres:['Dato de prueba','Otro dato de prueba','El tercer dato de prueba','asd','asdqw','123123','123123123','13123123123123','Dato de prueba','Otro dato de prueba','El tercer dato de prueba','asd','asdqw','123123','Dato de prueba','Otro dato de prueba','El tercer dato de prueba','asd','asdqw','123123','123123123','13123123123123','Dato de prueba','Otro dato de prueba','El tercer dato de prueba','asd','asdqw','123123','123123123','13123123123123'],
-    trabajos:[]
+    trabajos:[{foto:'https://picsum.photos/200',nombre:'Prueba',descripcion:`${this.loremtest.slice(0,50)}`,anio:'1950',autor:"perez reverte",eap:'www.google.es'},{foto:'https://picsum.photos/200',nombre:'Prueba',descripcion:`${this.loremtest.slice(0,50)}`,anio:'1950',autor:"perez reverte",eap:'www.google.es'},{foto:'https://picsum.photos/200',nombre:'Prueba',descripcion:`${this.loremtest.slice(0,50)}`,anio:'1950',autor:"perez reverte",eap:'www.google.es'},{foto:'https://picsum.photos/200',nombre:'Prueba',descripcion:`${this.loremtest.slice(0,50)}`,anio:'1950',autor:"perez reverte",eap:'www.google.es'},{foto:'https://picsum.photos/200',nombre:'Prueba',descripcion:`${this.loremtest.slice(0,50)}`,anio:'1950',autor:"perez reverte",eap:'www.google.es'},{foto:'https://picsum.photos/200',nombre:'Prueba',descripcion:`${this.loremtest.slice(0,50)}`,anio:'1950',autor:"perez reverte",eap:'www.google.es'},]
   }
 
   constructor() { }

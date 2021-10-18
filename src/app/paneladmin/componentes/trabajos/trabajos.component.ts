@@ -36,7 +36,7 @@ export class TrabajosComponent implements OnInit {
   
   formularioback(trabajo:trabajo){
     this.trabajoseleccionado = trabajo;
-    let {ID,...curro} = this.trabajoseleccionado;
+    let curro = this.trabajoseleccionado;
     this.forma.setValue(curro);
   }
 
