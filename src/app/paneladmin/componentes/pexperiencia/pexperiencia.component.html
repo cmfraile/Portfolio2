@@ -1,1 +1,38 @@
-<p>pexperiencia works!</p>
+<div class="container">
+    <div class="row sup">
+        <form [formGroup]="forma">
+            <mat-form-field appearance="outline" class="dato puesto">
+                <mat-label>Puesto</mat-label>
+                <input  matInput
+                        formControlName="puesto">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="dato ano">
+                <mat-label>Año</mat-label>
+                <input  matInput
+                        formControlName="ano">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="dato duracion">
+                <mat-label>Duracion</mat-label>
+                <input  matInput
+                        formControlName="duracion">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="dato lugar">
+                <mat-label>Lugar</mat-label>
+                <input  matInput
+                        formControlName="lugar">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="dato descripcion">
+                <mat-label>Descripcion</mat-label>
+                <textarea   matInput
+                            formControlName="descripcion"></textarea>
+            </mat-form-field>
+            <div class="botonera">
+                <button class="botonaccion" title="Guardar"><i class="fas fa-pencil-alt"></i></button>
+                <button class="botonaccion" title="Limpiar"><i class="fas fa-eraser"></i></button>
+                <button class="botonaccion" title="Borrar"><i class="fas fa-times-circle"></i></button>
+            </div>
+        </form>
+    </div>
+    <hr>
+
+</div>
