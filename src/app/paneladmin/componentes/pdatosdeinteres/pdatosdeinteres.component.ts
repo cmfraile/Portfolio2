@@ -26,6 +26,11 @@ export class PdatosdeinteresComponent implements OnInit {
     if(flag){return}else{this._td.data.datosinteres.push(input) ; this.quejadato = false};
   }
 
+  borrar(dato:string){
+    const confirmar = confirm(`Desea borrar el item: ${dato}`);
+    if(confirmar){ console.log("ITEM BORRADO") }else{return};
+  }
+
   ngOnInit(): void {
   }
 
