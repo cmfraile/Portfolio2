@@ -1,0 +1,14 @@
+<form [formGroup]="forma" class="login" (ngSubmit)="loginada()" >
+    <mat-form-field class="dato" appearance="outline">
+        <mat-label>usuario</mat-label>
+        <input  matInput
+                formControlName="usuario">
+    </mat-form-field>
+    <mat-form-field class="dato" appearance="outline">
+        <mat-label>contraseña</mat-label>
+        <input  matInput
+                type="password"
+                formControlName="pass">
+    </mat-form-field>
+    <button mat-raised-button color="primary">Iniciar sesión</button>
+</form>

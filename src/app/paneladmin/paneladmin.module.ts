@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule }  from '@angular/material/input';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { LogadminComponent } from './componentes/logadmin/logadmin.component';
 
 
 export const routes : Routes = [
@@ -31,6 +32,7 @@ export const routes : Routes = [
     PexperienciaComponent,
     PformacionComponent,
     PdatosdeinteresComponent,
+    LogadminComponent,
   ],
   imports: [
     CommonModule,
