@@ -1,0 +1,44 @@
+.container
+    .sup
+        max-height: 35vh
+        .dato
+            margin: -10px 5px
+        .formacion
+            min-width: 100%
+        .institucion,.periodo
+            min-width: 48%
+        .botonera
+            min-width: 100%
+            display: flex
+            justify-content: space-around
+            flex-wrap: nowrap
+            button
+                margin: 0px 15px
+                background-color: transparent
+                border: 2px solid white
+                border-radius: 5px
+                i
+                    margin: 15px
+                    color: white
+                    font-size: 1.5rem
+    .inf
+        overflow-y: scroll
+        max-height: 65vh
+        .item,.periodo,.institucion,.formacion
+            display: flex
+            justify-content: center
+            flex-wrap: wrap
+        .item
+            margin: 15px 0px
+            max-width: 50%
+        .periodo,.institucion
+            min-width: 50%
+            display: flex
+            justify-content: center
+            align-items: center
+        .periodo
+            border-right: 2px solid white
+        .formacion
+            min-width: 100%
+            text-align: justify
+            border-bottom: 2px solid white

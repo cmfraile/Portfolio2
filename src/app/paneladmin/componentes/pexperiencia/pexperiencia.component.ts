@@ -11,7 +11,7 @@ export class PexperienciaComponent implements OnInit {
 
   forma:FormGroup;
   
-  constructor( private _td:TraerdataService , private _fb:FormBuilder ){
+  constructor( public _td:TraerdataService , private _fb:FormBuilder ){
     this.forma = this._fb.group({
       puesto:'',ano:'',duracion:'',lugar:'',descripcion:''
     })
