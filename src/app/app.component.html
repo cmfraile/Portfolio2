@@ -2,7 +2,8 @@
 <!-- <div class="padraso {{fondoclase}}"> -->
 <div class="padraso {{fondoclase}}">
     <div class="container">
-    <router-outlet></router-outlet>
+    <router-outlet *ngIf="true"></router-outlet>
+    <div *ngIf="false" class="spinner"><mat-spinner color="warn"></mat-spinner></div>
     </div>
     <app-navegacion [ngClass]="{'nav':true,'funado':adminav}" ></app-navegacion>
 </div>
