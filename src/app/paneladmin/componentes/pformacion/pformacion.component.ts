@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder , FormGroup } from '@angular/forms';
-import { TraerdataService } from '../../servicios/traerdata.service';
 
 @Component({
   selector: 'app-pformacion',
@@ -11,7 +10,7 @@ export class PformacionComponent implements OnInit {
 
   forma:FormGroup;
   
-  constructor( public _td:TraerdataService , private _fb:FormBuilder ){
+  constructor( private _fb:FormBuilder ){
     this.forma = this._fb.group({
       formación:'',periodo:'',institucion:''
     })

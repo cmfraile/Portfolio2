@@ -10,7 +10,7 @@
                 <div class="botonera">
                     <small class="errorentrada" *ngIf="this.quejadato" >El dato que intentaste introducir ya existe o no contiene nada.</small>
                     <div class="blanco"></div>
-                    <button mat-raised-button color="primary" (click)="guardar()">Guardar dato de interés</button> 
+                    <button mat-raised-button color="primary">Guardar dato de interés</button> 
                 </div>     
             </form>
         </div>
@@ -18,7 +18,7 @@
     <hr>
     <div class="row inf">
         <div class="col tarjetainteres">
-            <div class="dato" *ngFor="let dato of this._td.data.datosinteres">{{dato}}<button (click)="borrar(dato)" ><i class="fas fa-trash-alt borrado"></i></button></div>
+            <div class="dato">dato<button><i class="fas fa-trash-alt borrado"></i></button></div>
         </div>
     </div>
 </div>

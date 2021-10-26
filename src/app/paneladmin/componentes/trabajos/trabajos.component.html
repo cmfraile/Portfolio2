@@ -36,16 +36,16 @@
     </div>
     <div class="row">
         <div class="col trabajos">
-            <div class="trabajoitem" *ngFor="let trabajo of trabajos" (click)="formularioback(trabajo)">
+            <div class="trabajoitem">
                 <div class="grupofotodel">
-                    <div class="foto" style="background-image: url({{trabajo.foto}});"></div>
+                    <div class="foto" style="background-image: url();"></div>
                 </div>
                 <div class="grupodatostring">
-                    <div class="nombre">{{trabajo.nombre.slice(0,10)}}...</div>
-                    <div class="anio">{{trabajo.anio}}</div>
-                    <div class="descripcion">{{trabajo.descripcion.slice(0,50)}}...</div>
-                    <div class="autor">{{trabajo.autor.slice(0,10)}}...</div>
-                    <div class="enlace">{{trabajo.eap.slice(0,10)}}...</div>
+                    <div class="nombre"></div>
+                    <div class="anio"></div>
+                    <div class="descripcion"></div>
+                    <div class="autor"></div>
+                    <div class="enlace">...</div>
                 </div>
             </div>
         </div>
