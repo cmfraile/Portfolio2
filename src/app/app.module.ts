@@ -11,6 +11,7 @@ import { PaneladminModule, routes as rutaspaneladmin } from './paneladmin/panela
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
+import { PeriodopipePipe } from './componentes/perfil/periodopipe.pipe';
 
 const routes: Routes = [
   {path:'',component:MainComponent},
@@ -29,7 +30,8 @@ const routes: Routes = [
     NavegacionComponent,
     PerfilComponent,
     TrabajosComponent,
-    RrssComponent
+    RrssComponent,
+    PeriodopipePipe
   ],
   imports: [
     BrowserModule,

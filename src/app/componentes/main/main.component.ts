@@ -12,7 +12,7 @@ export class MainComponent implements OnInit{
   titulo!:string;
   presentacion!:string;
   
-  constructor(public _td:TraerdataService){
+  constructor(private _td:TraerdataService){
     this._td.submaster.ntair$.subscribe(resp => {
       this.nombre = resp[0].nombre;
       this.titulo = resp[0].titulo;

@@ -14,7 +14,7 @@
         <h3>formación académica</h3>
         <div class="tarjetafor" *ngFor="let dato of formacion" >
             <div class="formacion">{{dato.materia}}</div>
-            <div class="periodo">{{dato.periodo}}</div>
+            <div class="periodo">{{dato.periodo | periodopipe}}</div>
             <div class="lugar">{{dato.institucion}}</div>
         </div>
         <h3>Datos de interes</h3>
