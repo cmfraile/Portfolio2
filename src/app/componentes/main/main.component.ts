@@ -8,7 +8,17 @@ import { TraerdataService } from 'src/app/servicios/traerdata.service';
 })
 export class MainComponent implements OnInit{
   
-  constructor(public _td:TraerdataService){}
+  nombre!:string;
+  titulo!:string;
+  presentacion!:string;
+  
+  constructor(public _td:TraerdataService){
+    this._td.submaster.ntair$.subscribe(resp => {
+      this.nombre = resp[0].nombre;
+      this.titulo = resp[0].titulo;
+      this.presentacion = resp[0].presentacion;
+    });
+  }
 
   ngOnInit(): void {}
 }
