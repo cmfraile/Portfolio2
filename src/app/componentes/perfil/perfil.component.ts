@@ -13,7 +13,11 @@ export class PerfilComponent implements OnInit{
   formacion!:formacion[]|undefined;
   dinteres!:dinteres[]|undefined;
   
-  constructor(private _td:TraerdataService){}
+  constructor(private _td:TraerdataService){
+    this._td.perfilGET.experiencia$.subscribe(resp => this.experiencia = resp);
+    this._td.perfilGET.formacion$.subscribe(resp => this.formacion = resp);
+    this._td.perfilGET.dinteres$.subscribe(resp => this.dinteres = resp);
+  }
 
   ngOnInit(): void {}
 

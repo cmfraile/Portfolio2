@@ -12,7 +12,11 @@ export class TraerdataService {
   baseURL:string='http://localhost:8000/api';
   
   ntairGET = this._hc.get<di.ntair[]>(`${this.baseURL}/ntair`).pipe(map(resp => resp[0]));
-  experienciaGET = this._hc.get<di.experiencia[]>(`${this.baseURL}/experiencia`).pipe(map(experiencia => {experiencia}));
+  perfilGET = {
+    experiencia$ : this._hc.get<di.experiencia[]>(`${this.baseURL}/experiencia`),
+    formacion$ : this._hc.get<di.formacion[]>(`${this.baseURL}/formacion`),
+    dinteres$ : this._hc.get<di.dinteres[]>(`${this.baseURL}/dinteres`)
+  }
   
   constructor( private _hc:HttpClient ){}
 
