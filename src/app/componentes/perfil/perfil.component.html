@@ -1,67 +1,24 @@
 <div class="row perfilc">
     <div class="col contenido">
         <h3>Experiencia profesional</h3>
-        <div class="tarjetaxp">
-            <div class="puesto">Puesto de trabajo</div>
-            <div class="ano">año</div>
-            <div class="duracion">Duracion</div>
-            <div class="lugar">Lugar</div>
-            <div class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum temporibus dolores pariatur aliquid quos accusamus ab sapiente, cumque architecto esse omnis vero obcaecati voluptatum tenetur quasi perferendis laudantium quaerat repellendus!</div>
-        </div>
-        <div class="tarjetaxp">
-            <div class="puesto">Puesto de trabajo</div>
-            <div class="ano">año</div>
-            <div class="duracion">Duracion</div>
-            <div class="lugar">Lugar</div>
-            <div class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum temporibus dolores pariatur aliquid quos accusamus ab sapiente, cumque architecto esse omnis vero obcaecati voluptatum tenetur quasi perferendis laudantium quaerat repellendus!</div>
-        </div>
-        <div class="tarjetaxp">
-            <div class="puesto">Puesto de trabajo</div>
-            <div class="ano">año</div>
-            <div class="duracion">Duracion</div>
-            <div class="lugar">Lugar</div>
-            <div class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum temporibus dolores pariatur aliquid quos accusamus ab sapiente, cumque architecto esse omnis vero obcaecati voluptatum tenetur quasi perferendis laudantium quaerat repellendus!</div>
-        </div>
-        <div class="tarjetaxp">
-            <div class="puesto">Puesto de trabajo</div>
-            <div class="ano">año</div>
-            <div class="duracion">Duracion</div>
-            <div class="lugar">Lugar</div>
-            <div class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum temporibus dolores pariatur aliquid quos accusamus ab sapiente, cumque architecto esse omnis vero obcaecati voluptatum tenetur quasi perferendis laudantium quaerat repellendus!</div>
+        <div class="tarjetaxp" *ngFor="let dato of experiencia" >
+            <div class="puesto">{{dato.puesto}}</div>
+            <div class="ano">{{dato.year}}</div>
+            <div class="duracion">{{dato.meses}}</div>
+            <div class="lugar">{{dato.lugar}}</div>
+            <div class="descripcion">Se te olvido la descripción la reconcha de tu madre</div>
         </div>
     </div>
     <div class="col vacio"></div>
     <div class="col contenido formaciongrupo">
         <h3>formación académica</h3>
-        <div class="tarjetafor">
-            <div class="formacion">Formación recibida , Lorem ipsum dolor sit.</div>
-            <div class="periodo">Periodo</div>
-            <div class="lugar">Lugar de formación</div>
-        </div>
-        <div class="tarjetafor">
-            <div class="formacion">Formación recibida , Lorem ipsum dolor sit.</div>
-            <div class="periodo">Periodo</div>
-            <div class="lugar">Lugar de formación</div>
-        </div>
-        <div class="tarjetafor">
-            <div class="formacion">Formación recibida , Lorem ipsum dolor sit.</div>
-            <div class="periodo">Periodo</div>
-            <div class="lugar">Lugar de formación</div>
-        </div>
-        <div class="tarjetafor">
-            <div class="formacion">Formación recibida , Lorem ipsum dolor sit.</div>
-            <div class="periodo">Periodo</div>
-            <div class="lugar">Lugar de formación</div>
+        <div class="tarjetafor" *ngFor="let dato of formacion" >
+            <div class="formacion">{{dato.materia}}</div>
+            <div class="periodo">{{dato.periodo}}</div>
+            <div class="lugar">{{dato.institucion}}</div>
         </div>
         <h3>Datos de interes</h3>
         <div class="tarjetainteres">
-            <div class="dato">Dato de interés</div>
-            <div class="dato">Dato de interés</div>
-            <div class="dato">Dato de interés</div>
-            <div class="dato">Dato de interés</div>
-            <div class="dato">Dato de interés</div>
-            <div class="dato">Dato de interés</div>
-            <div class="dato">Dato de interés</div>
             <div class="dato">Dato de interés</div>
         </div>
     </div>
