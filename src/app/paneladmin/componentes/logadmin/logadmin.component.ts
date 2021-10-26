@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TraerdataService } from 'src/app/servicios/traerdata.service';
 
 @Component({
   selector: 'app-logadmin',
@@ -10,21 +11,16 @@ export class LogadminComponent implements OnInit {
 
   forma:FormGroup;
   
-  constructor( private _fb:FormBuilder ){
+  constructor( private _fb:FormBuilder , private _td:TraerdataService ){
     this.forma = this._fb.group({
       usuario:'',pass:''
     });
   }
 
-  ngOnInit(): void {}
-
-  loginada(){
-    const {usuario,pass} = this.forma.value;
-    if(usuario == "usuario" && pass == "usuario"){
-      console.log("LOGIN correcto")
-    } else {
-      this.forma.reset();
-    }
+  async logincomponent(){
+    const loginaccion = await this._td.login(this.forma.value.usuario,this.forma.value.pass);
   }
+
+  ngOnInit(): void {}
 
 }
