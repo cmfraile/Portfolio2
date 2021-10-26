@@ -13,10 +13,10 @@ export class MainComponent implements OnInit{
   presentacion!:string;
   
   constructor(private _td:TraerdataService){
-    this._td.submaster.ntair$.subscribe(resp => {
-      this.nombre = resp[0].nombre;
-      this.titulo = resp[0].titulo;
-      this.presentacion = resp[0].presentacion;
+    this._td.ntairGET.subscribe(resp => {
+      this.nombre = resp.nombre;
+      this.titulo = resp.titulo;
+      this.presentacion = resp.presentacion;
     });
   }
 

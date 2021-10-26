@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { merge, Subject } from 'rxjs';
+import { map, mergeAll } from 'rxjs/operators'
 import * as di from '../interfaces/todainterfaz';
 
 @Injectable({
@@ -9,24 +10,10 @@ import * as di from '../interfaces/todainterfaz';
 export class TraerdataService {
 
   baseURL:string='http://localhost:8000/api';
-
-  submaster = {
-    ntair$ : new Subject<di.ntair[]>(),
-    experiencia$ : new Subject<di.experiencia[]>(),
-    formacion$ : new Subject<di.formacion[]>(),
-    dinteres$ : new Subject<di.dinteres[]>(),
-    trabajo$ : new Subject<di.trabajo[]>()
-  }
   
-  constructor( private _hc:HttpClient ){
-    console.log("Se inicia el constructor del servicio");
-    this._hc.get<di.datamasterinterface>(`${this.baseURL}/master`).subscribe(resp => {
-      this.submaster.ntair$.next(resp.ntair);
-      this.submaster.experiencia$.next(resp.experiencia);
-      this.submaster.formacion$.next(resp.formacion);
-      this.submaster.dinteres$.next(resp.dinteres);
-      this.submaster.trabajo$.next(resp.trabajo);
-    },error => {console.log(error)});
-  }
+  ntairGET = this._hc.get<di.ntair[]>(`${this.baseURL}/ntair`).pipe(map(resp => resp[0]));
+  experienciaGET = this._hc.get<di.experiencia[]>(`${this.baseURL}/experiencia`).pipe(map(experiencia => {experiencia}));
+  
+  constructor( private _hc:HttpClient ){}
 
 }

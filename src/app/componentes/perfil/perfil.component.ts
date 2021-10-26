@@ -9,9 +9,9 @@ import { TraerdataService } from 'src/app/servicios/traerdata.service';
 })
 export class PerfilComponent implements OnInit{
 
-  experiencia!:experiencia[];
-  formacion!:formacion[];
-  dinteres!:dinteres[];
+  experiencia!:experiencia[]|undefined;
+  formacion!:formacion[]|undefined;
+  dinteres!:dinteres[]|undefined;
   
   constructor(private _td:TraerdataService){}
 
