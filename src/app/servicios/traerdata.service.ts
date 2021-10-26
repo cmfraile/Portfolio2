@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { datamasterinterface } from '../interfaces/todainterfaz';
 
@@ -6,13 +7,19 @@ import { datamasterinterface } from '../interfaces/todainterfaz';
 })
 export class TraerdataService {
 
-  constructor(){}
+  baseURL:string='http://localhost:8000/api/'
+  apitest:string='https://reqres.in/api/users?page=2'
+  
+  constructor( private _hc:HttpClient ){
+    this._hc.get(this.baseURL).subscribe(console.log);
+  }
 
   data:datamasterinterface = {
     ntair:undefined,
     experiencia:undefined,
     formacion:undefined,
-    trabajos:undefined
+    dinteres:undefined,
+    trabajo:undefined
   }
 
 }

@@ -10,6 +10,7 @@ import { RrssComponent } from './componentes/rrss/rrss.component';
 import { PaneladminModule, routes as rutaspaneladmin } from './paneladmin/paneladmin.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {path:'',component:MainComponent},
@@ -34,6 +35,7 @@ const routes: Routes = [
     BrowserModule,
     PaneladminModule,
     MatProgressSpinnerModule,
+    HttpClientModule,
     RouterModule.forRoot(routes,{
       scrollPositionRestoration:'top',
     }),
