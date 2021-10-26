@@ -21,10 +21,6 @@ export class PerfilComponent implements OnInit{
     this._td.submaster.dinteres$.subscribe(resp => this.dinteres = resp);
   }
 
-  periodopipe(dato:any):string{
-    if(dato.length == 1){return `${dato[0]}aaa`}else{return `${dato[0]} - ${dato[1]}aaa`};
-  }
-
   ngOnInit(): void {}
 
 }

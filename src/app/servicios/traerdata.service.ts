@@ -19,6 +19,7 @@ export class TraerdataService {
   }
   
   constructor( private _hc:HttpClient ){
+    console.log("Se inicia el constructor del servicio");
     this._hc.get<di.datamasterinterface>(`${this.baseURL}/master`).subscribe(resp => {
       this.submaster.ntair$.next(resp.ntair);
       this.submaster.experiencia$.next(resp.experiencia);
