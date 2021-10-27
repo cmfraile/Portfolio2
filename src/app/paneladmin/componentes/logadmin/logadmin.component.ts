@@ -17,11 +17,15 @@ export class LogadminComponent implements OnInit {
     });
   }
 
-  async logincomponent(){
+  logincomponent(){
     const { usuario , pass } = this.forma.value;
-    this._td.login(usuario,pass).subscribe( (resp:any) => {
+    this._td.login(usuario,pass).subscribe((resp:any) => {
       if(!resp.admin && !resp.token){return};
-      
+      sessionStorage.setItem('token',resp.token);
+      let horaexpiracion = new Date() ; horaexpiracion.setMinutes(horaexpiracion.getMinutes()+59);
+      sessionStorage.setItem('expiracion',horaexpiracion.toString());
+      window.location.reload();
+      //Al comparar fechas se considera su valor negativo o positivo desde el 1 de enero del 1970.
     });
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenucambioService } from '../../servicios/menucambio.service';
 
 @Component({
@@ -19,10 +20,11 @@ export class NavadminComponent implements OnInit {
   }
 
   logout(){
-    console.log("Esto es el logout");
+    sessionStorage.clear();
+    window.location.reload();
   }
   
-  constructor( private _mc:MenucambioService ) { }
+  constructor( private _mc:MenucambioService , private _r:Router ){}
 
   ngOnInit(): void {
   }

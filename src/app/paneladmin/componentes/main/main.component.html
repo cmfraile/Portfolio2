@@ -1,9 +1,9 @@
 <div class="main">
     <div class="container">
         <div class="row">
-            <div class="col navadmin funado"><app-navadmin></app-navadmin></div>
-            <div class="col logadmin"><app-logadmin></app-logadmin></div>
-            <div class="col comadmin">
+            <div *ngIf="!flagacceso" class="col logadmin"><app-logadmin></app-logadmin></div>
+            <div *ngIf="flagacceso" class="col navadmin"><app-navadmin></app-navadmin></div>
+            <div *ngIf="flagacceso" class="col comadmin">
                 <app-about *ngIf="desplieguemenu == 'About'"></app-about>
                 <app-pexperiencia *ngIf="desplieguemenu == 'PerfilExperiencia'"></app-pexperiencia>
                 <app-pformacion *ngIf="desplieguemenu == 'PerfilFormacion'"></app-pformacion>

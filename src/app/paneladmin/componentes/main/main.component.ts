@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HeartbeatService } from '../../servicios/heartbeat.service';
 import { MenucambioService } from '../../servicios/menucambio.service';
 
 @Component({
@@ -9,9 +10,11 @@ import { MenucambioService } from '../../servicios/menucambio.service';
 export class MainComponent implements OnInit {
 
   desplieguemenu!:string;
+  flagacceso:boolean = false;
   
-  constructor( private _mc:MenucambioService ){
+  constructor( private _mc:MenucambioService , private _hb:HeartbeatService ){
     this._mc.menuadmin$.subscribe(resp => this.desplieguemenu = resp);
+    this.flagacceso = this._hb.latido();
   }
 
   ngOnInit(): void {
