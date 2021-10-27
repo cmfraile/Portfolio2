@@ -10,7 +10,7 @@ import { MenucambioService } from '../../servicios/menucambio.service';
 export class MainComponent implements OnInit {
 
   desplieguemenu!:string;
-  flagacceso:boolean = false;
+  flagacceso!:boolean;
   
   constructor( private _mc:MenucambioService , private _hb:HeartbeatService ){
     this._mc.menuadmin$.subscribe(resp => this.desplieguemenu = resp);
