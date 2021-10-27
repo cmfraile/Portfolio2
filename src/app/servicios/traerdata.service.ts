@@ -17,17 +17,8 @@ export class TraerdataService {
     dinteres$ : this._hc.get<di.dinteres[]>(`${this.baseURL}/dinteres`)
   }
 
-  async login(nombre:string,pass:string):Promise<Boolean>{
-    let caso:boolean = false;
-    try{
-      this._hc.post(`${this.baseURL}/admin/login`,{nombre,pass}).subscribe((resp:any) => {
-        if(resp.token){
-          sessionStorage.setItem('token',resp.token);
-          caso = true;
-        };
-      });
-    }catch(err){console.log};
-    return caso;
+  login(nombre:string,pass:string){
+    return this._hc.post(`${this.baseURL}/admin/login`,{nombre,pass});
   }
   
   constructor( private _hc:HttpClient ){}

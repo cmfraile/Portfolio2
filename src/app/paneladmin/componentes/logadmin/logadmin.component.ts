@@ -18,7 +18,11 @@ export class LogadminComponent implements OnInit {
   }
 
   async logincomponent(){
-    const loginaccion = await this._td.login(this.forma.value.usuario,this.forma.value.pass);
+    const { usuario , pass } = this.forma.value;
+    this._td.login(usuario,pass).subscribe( (resp:any) => {
+      if(!resp.admin && !resp.token){return};
+      
+    });
   }
 
   ngOnInit(): void {}
