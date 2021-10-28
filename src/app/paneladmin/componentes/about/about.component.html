@@ -17,6 +17,7 @@
                     <input  matInput
                             formControlName="ocupacion">
                 </mat-form-field>
+                <p class="advertencia" *ngIf="advertencia">La presentación no cumple con los criterios para ser guardado</p>
                 <div class="botonera">
                     <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
                     <button mat-raised-button color="primary" (click)="borrar()">Limpiar</button>
