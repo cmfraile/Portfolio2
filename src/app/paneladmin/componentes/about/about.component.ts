@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ntair } from 'src/app/interfaces/todainterfaz';
 import { TraerdataService } from 'src/app/servicios/traerdata.service';
 
 @Component({
@@ -19,6 +18,13 @@ export class AboutComponent implements OnInit {
       nombre:['',[Validators.required,Validators.minLength(5)]],
       ocupacion:['',[Validators.required,Validators.minLength(5)]]
     });
+    this._td.ntairGET.subscribe(resp => {
+      const { nombre , titulo , presentacion } = resp;
+      this.forma.controls.areatexto.setValue(presentacion);
+      this.forma.controls.nombre.setValue(nombre);
+      this.forma.controls.ocupacion.setValue(titulo);
+    });
+    console.log(this.forma);
   }
 
   guardar(){
