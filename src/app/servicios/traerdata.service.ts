@@ -10,6 +10,7 @@ import * as di from '../interfaces/todainterfaz';
 export class TraerdataService {
 
   baseURL:string='http://localhost:8000/api';
+  aboutobj!:di.ntair;
 
   ntairGET = this._hc.get<di.ntair[]>(`${this.baseURL}/ntair`).pipe(map(resp => resp[0]));
   perfilGET = {
@@ -20,12 +21,6 @@ export class TraerdataService {
 
   login(nombre:string,pass:string){
     return this._hc.post(`${this.baseURL}/admin/login`,{nombre,pass});
-  }
-
-  async obsenespera(obs$:Observable<any>):Promise<any>{
-    return new Promise((rs,rj) => {
-      obs$.subscribe((resp:any) => {if(resp){rs(resp)}},(err:any) => {if(err){rj(err)}});
-    })
   }
 
   ntairPOST(cuerpo:di.ntair){

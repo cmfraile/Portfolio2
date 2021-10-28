@@ -13,12 +13,11 @@ export class AboutComponent implements OnInit {
   forma:FormGroup;
   
   constructor( private _fb:FormBuilder , private _td:TraerdataService ){
-    let inicio:ntair = {nombre:'potasio',titulo:'potasio',presentacion:'potasio'}
-    const demora = await this._td.obsenespera(this._td.ntairGET);
     this.forma = this._fb.group({
-      areatexto:[inicio.presentacion,[Validators.required,Validators.minLength(10)]],
-      nombre:[inicio.nombre,[Validators.required,Validators.minLength(5)]],
-      ocupacion:[inicio.titulo,[Validators.required,Validators.minLength(5)]]
+      //Deben de igualarse a lo del servicio:
+      areatexto:['',[Validators.required,Validators.minLength(10)]],
+      nombre:['',[Validators.required,Validators.minLength(5)]],
+      ocupacion:['',[Validators.required,Validators.minLength(5)]]
     });
   }
 
