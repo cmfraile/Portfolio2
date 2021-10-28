@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class PdatosdeinteresComponent implements OnInit {
 
   forma:FormGroup;
-  quejadato:boolean = false
+  quejadato:boolean = true
   
   constructor( private _fb:FormBuilder ){
     this.forma = this._fb.group({
@@ -17,10 +17,7 @@ export class PdatosdeinteresComponent implements OnInit {
     });
   }
 
-  borrar(dato:string){
-    const confirmar = confirm(`Desea borrar el item: ${dato}`);
-    if(confirmar){ console.log("ITEM BORRADO") }else{return};
-  }
+  borrar(dato:string){}
 
   ngOnInit(): void {
   }
