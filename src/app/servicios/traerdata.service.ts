@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import * as di from '../interfaces/todainterfaz';
 
@@ -19,6 +20,17 @@ export class TraerdataService {
 
   login(nombre:string,pass:string){
     return this._hc.post(`${this.baseURL}/admin/login`,{nombre,pass});
+  }
+
+  async obsenespera(obs$:Observable<any>):Promise<any>{
+    return new Promise((rs,rj) => {
+      obs$.subscribe((resp:any) => {if(resp){rs(resp)}},(err:any) => {if(err){rj(err)}});
+    })
+  }
+
+  ntairPOST(cuerpo:di.ntair){
+    const cabesa = new HttpHeaders({token:sessionStorage.getItem('token') || ""})
+    return this._hc.post<di.ntair>(`${this.baseURL}/ntair`,cuerpo,{headers:cabesa});
   }
   
   constructor( private _hc:HttpClient ){}
