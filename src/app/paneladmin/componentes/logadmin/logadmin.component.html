@@ -10,5 +10,6 @@
                 type="password"
                 formControlName="pass">
     </mat-form-field>
+    <p *ngIf="advertencia" class="advertencia"> Usuario/Contraseña incorrectos </p>
     <button mat-raised-button color="primary">Iniciar sesión</button>
 </form>
