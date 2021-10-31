@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { dinteres } from 'src/app/interfaces/todainterfaz';
 import { TraerdataService } from 'src/app/servicios/traerdata.service';
 import { HeartbeatService } from '../../servicios/heartbeat.service';
 
@@ -17,14 +16,18 @@ export class PdatosdeinteresComponent implements OnInit {
 
   seleccionado!:{dato:string,_id:string,__v:number} | null;
 
-  constructor( private _fb:FormBuilder , private _td:TraerdataService ){
+  constructor( private _fb:FormBuilder , private _td:TraerdataService , private _hb:HeartbeatService ){
     this.forma = this._fb.group({
       datointeres:['',[Validators.required,Validators.minLength(5)]],
     });
     this.getdinteres();
   }
 
-  getdinteres(){this._td.perfilGET.dinteres$.subscribe(resp => this.dinteresdata = resp) ; this.seleccionado = null};
+  getdinteres(){
+    this._td.perfilGET.dinteres$.subscribe(resp => this.dinteresdata = resp);
+    this.seleccionado = null;
+    if(!this._hb.latido()){sessionStorage.clear();window.location.reload()};
+  };
 
   guardar(){
     if(this.forma.invalid){this.quejadato = true ; return}

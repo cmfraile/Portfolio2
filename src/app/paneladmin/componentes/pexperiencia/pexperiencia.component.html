@@ -8,12 +8,14 @@
             </mat-form-field>
             <mat-form-field appearance="outline" class="dato ano">
                 <mat-label>Año</mat-label>
-                <input  matInput
+                <input  type="number"
+                        matInput
                         formControlName="ano">
             </mat-form-field>
             <mat-form-field appearance="outline" class="dato duracion">
-                <mat-label>Duracion</mat-label>
-                <input  matInput
+                <mat-label>Duracion (en meses)</mat-label>
+                <input  type="number"
+                        matInput
                         formControlName="duracion">
             </mat-form-field>
             <mat-form-field appearance="outline" class="dato lugar">
@@ -35,33 +37,12 @@
     </div>
     <hr>
     <div class="row inf">
-        <div class="item">
-            <p class="puesto">Lorem, ipsum.</p>
-            <p class="ano">1999</p>
-            <p class="duracion">3 meses</p>
-            <p class="lugar">Ayuntamiento de Córdoba</p>
-            <p class="descripcion">Descripcion</p>
-        </div>
-        <div class="item">
-            <p class="puesto">Lorem, ipsum.</p>
-            <p class="ano">1999</p>
-            <p class="duracion">3 meses</p>
-            <p class="lugar">Ollerias</p>
-            <p class="descripcion">Descripcion</p>
-        </div>
-        <div class="item">
-            <p class="puesto">Lorem, ipsum.</p>
-            <p class="ano">1999</p>
-            <p class="duracion">3 meses</p>
-            <p class="lugar">Ollerias</p>
-            <p class="descripcion">Descripcion</p>
-        </div>
-        <div class="item">
-            <p class="puesto">Lorem, ipsum.</p>
-            <p class="ano">1999</p>
-            <p class="duracion">3 meses</p>
-            <p class="lugar">Ollerias</p>
-            <p class="descripcion">Descripcion</p>
+        <div class="item" *ngFor="let dato of experienciadata">
+            <p class="puesto">{{dato.puesto}}</p>
+            <p class="ano">{{dato.year}}</p>
+            <p class="duracion">{{dato.meses}}</p>
+            <p class="lugar">{{dato.lugar}}</p>
+            <p class="descripcion">{{dato.descripcion}}</p>
         </div>
     </div>
 
