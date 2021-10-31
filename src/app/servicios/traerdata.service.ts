@@ -26,21 +26,20 @@ export class TraerdataService {
     return this._hc.post<di.ntair>(`${this.baseURL}/ntair`,cuerpo,{headers:this.headermaster});
   }
 
+  //Dinteres:
   dinteresPOST(dinteres:string){
     return this._hc.post<di.dinteres>(`${this.baseURL}/dinteres`,{dato:dinteres},{headers:this.headermaster});
   }
-
+  dinteresPUT(id:string,dato:string){
+    const cuerpo = {id,dato};
+    return this._hc.put<di.dinteres>(`${this.baseURL}/dinteres`,cuerpo,{headers:this.headermaster});
+  }
   dinteresDEL(id:string){
     return this._hc.delete<di.dinteres>(`${this.baseURL}/dinteres`,{headers:new HttpHeaders(
       {token:sessionStorage.getItem('token') || "",id}
     )});
   }
 
-  dinteresPUT(id:string,dato:string){
-    const cuerpo = {id,dato};
-    return this._hc.put<di.dinteres>(`${this.baseURL}/dinteres`,cuerpo,{headers:this.headermaster});
-  }
-  
   constructor( private _hc:HttpClient ){}
 
 }
