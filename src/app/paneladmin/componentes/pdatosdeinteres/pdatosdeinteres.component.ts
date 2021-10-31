@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { dinteres } from 'src/app/interfaces/todainterfaz';
+import { TraerdataService } from 'src/app/servicios/traerdata.service';
+import { HeartbeatService } from '../../servicios/heartbeat.service';
 
 @Component({
   selector: 'app-pdatosdeinteres',
@@ -9,15 +12,58 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class PdatosdeinteresComponent implements OnInit {
 
   forma:FormGroup;
-  quejadato:boolean = true
-  
-  constructor( private _fb:FormBuilder ){
+  quejadato:boolean = false;
+  dinteresdata!:any[];
+
+  seleccionado!:{dato:string,_id:string,__v:number} | null;
+
+  constructor( private _fb:FormBuilder , private _td:TraerdataService ){
     this.forma = this._fb.group({
-      datointeres:''
+      datointeres:['',[Validators.required,Validators.minLength(5)]],
+    });
+    this.getdinteres();
+  }
+
+  getdinteres(){this._td.perfilGET.dinteres$.subscribe(resp => this.dinteresdata = resp) ; this.seleccionado = null};
+
+  guardar(){
+    if(this.forma.invalid){this.quejadato = true ; return}
+
+    if(this.seleccionado !== null){
+      this._td.dinteresPUT(this.seleccionado._id,this.forma.value.datointeres).subscribe(resp => {
+        this.quejadato = false ; this.forma.reset() ; this.getdinteres();
+      },err => {
+        this.quejadato = true ; this.forma.reset() ; this.seleccionado = null;
+      });
+      return;
+    }
+
+    this._td.dinteresPOST(this.forma.value.datointeres).subscribe(resp => {
+      this.quejadato = false;this.forma.reset();this.getdinteres();
+    },err => {
+      this.quejadato = true;this.forma.reset();
+    });
+
+  }
+  
+  borrar(id:string,dato:string){
+    const alerta = confirm(`Desea borrar el item : [${dato}]`);
+    if(!alerta){return};
+    this._td.dinteresDEL(id).subscribe(resp => {
+      this.quejadato = false;
+      this.forma.reset();
+      this.getdinteres();
+    },err => {
+      console.log(err);
+      this.quejadato = true;
+      this.forma.reset();
     });
   }
 
-  borrar(dato:string){}
+  putdinteres(dato:{dato:string,_id:string,__v:number}){
+    this.seleccionado = dato;
+    this.forma.controls.datointeres.setValue(dato.dato);
+  }
 
   ngOnInit(): void {
   }

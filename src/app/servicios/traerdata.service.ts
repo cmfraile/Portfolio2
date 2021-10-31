@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import * as di from '../interfaces/todainterfaz';
 
@@ -10,7 +9,7 @@ import * as di from '../interfaces/todainterfaz';
 export class TraerdataService {
 
   baseURL:string='http://localhost:8000/api';
-  aboutobj!:di.ntair;
+  headermaster = new HttpHeaders({token:sessionStorage.getItem('token') || ""});
 
   ntairGET = this._hc.get<di.ntair[]>(`${this.baseURL}/ntair`).pipe(map(resp => resp[0]));
   perfilGET = {
@@ -24,8 +23,22 @@ export class TraerdataService {
   }
 
   ntairPOST(cuerpo:di.ntair){
-    const cabesa = new HttpHeaders({token:sessionStorage.getItem('token') || ""})
-    return this._hc.post<di.ntair>(`${this.baseURL}/ntair`,cuerpo,{headers:cabesa});
+    return this._hc.post<di.ntair>(`${this.baseURL}/ntair`,cuerpo,{headers:this.headermaster});
+  }
+
+  dinteresPOST(dinteres:string){
+    return this._hc.post<di.dinteres>(`${this.baseURL}/dinteres`,{dato:dinteres},{headers:this.headermaster});
+  }
+
+  dinteresDEL(id:string){
+    return this._hc.delete<di.dinteres>(`${this.baseURL}/dinteres`,{headers:new HttpHeaders(
+      {token:sessionStorage.getItem('token') || "",id}
+    )});
+  }
+
+  dinteresPUT(id:string,dato:string){
+    const cuerpo = {id,dato};
+    return this._hc.put<di.dinteres>(`${this.baseURL}/dinteres`,cuerpo,{headers:this.headermaster});
   }
   
   constructor( private _hc:HttpClient ){}

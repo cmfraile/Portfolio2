@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col formulario">
-            <form [formGroup]="forma">
+            <form [formGroup]="forma" (ngSubmit)="guardar()">
                 <mat-form-field class="entradadato"  appearance="outline">
                     <mat-label>Dato de interés</mat-label>
                     <input  matInput
@@ -18,7 +18,8 @@
     <hr>
     <div class="row inf">
         <div class="col tarjetainteres">
-            <div class="dato">dato<button><i class="fas fa-trash-alt borrado"></i></button></div>
+            <!-- <div class="dato">dato<button><i class="fas fa-trash-alt borrado"></i></button></div> -->
+            <div class="dato" *ngFor="let dato of dinteresdata" (click)="putdinteres(dato)" >{{dato.dato}}<button (click)="borrar(dato._id,dato.dato)" ><i class="fas fa-trash-alt borrado"></i></button></div>
         </div>
     </div>
 </div>
