@@ -20,7 +20,7 @@ export class PdatosdeinteresComponent implements OnInit {
     this.forma = this._fb.group({
       datointeres:['',[Validators.required,Validators.minLength(5)]],
     });
-    this.getdinteres();
+    this.getdinteres(true);
   }
 
   /*
@@ -31,9 +31,9 @@ export class PdatosdeinteresComponent implements OnInit {
   }
   */
  
-  getdinteres(){
-    this._td.perfilGET.dinteres$.subscribe(resp => this.dinteresdata = resp);
-    this.seleccionado = null;
+  getdinteres(exito:boolean){
+    if(exito){this._td.perfilGET.dinteres$.subscribe(resp => this.dinteresdata = resp);this.quejadato = false};
+    this.seleccionado = null; this.forma.reset();
     if(!this._hb.latido()){sessionStorage.clear();window.location.reload()};
   };
 
@@ -41,34 +41,18 @@ export class PdatosdeinteresComponent implements OnInit {
     if(this.forma.invalid){this.quejadato = true ; return}
 
     if(this.seleccionado !== null){
-      this._td.dinteresPUT(this.seleccionado._id,this.forma.value.datointeres).subscribe(resp => {
-        this.quejadato = false ; this.forma.reset() ; this.getdinteres();
-      },err => {
-        this.quejadato = true ; this.forma.reset() ; this.seleccionado = null;
-      });
+      this._td.dinteresPUT(this.seleccionado._id,this.forma.value.datointeres).subscribe(resp => {this.getdinteres(true)},err => {this.getdinteres(false)});
       return;
     }
 
-    this._td.dinteresPOST(this.forma.value.datointeres).subscribe(resp => {
-      this.quejadato = false;this.forma.reset();this.getdinteres();
-    },err => {
-      this.quejadato = true;this.forma.reset();
-    });
+    this._td.dinteresPOST(this.forma.value.datointeres).subscribe(resp => {this.getdinteres(true)},err => {this.getdinteres(false)});
 
   }
   
   borrar(id:string,dato:string){
     const alerta = confirm(`Desea borrar el item : [${dato}]`);
     if(!alerta){return};
-    this._td.dinteresDEL(id).subscribe(resp => {
-      this.quejadato = false;
-      this.forma.reset();
-      this.getdinteres();
-    },err => {
-      console.log(err);
-      this.quejadato = true;
-      this.forma.reset();
-    });
+    this._td.dinteresDEL(id).subscribe(resp => {this.getdinteres(true)},err => {this.getdinteres(false)});
   }
 
   putdinteres(dato:{dato:string,_id:string,__v:number}){
