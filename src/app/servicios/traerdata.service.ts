@@ -45,7 +45,11 @@ export class TraerdataService {
   experienciaPOST(experiencia:di.experiencia){
     return this._hc.post<di.experiencia>(`${this.baseURL}/experiencia`,experiencia,{headers:this.headermaster});
   }
-
+  experienciaPUT(id:string,data:di.experiencia){
+    const cuerpo = {id,...data};
+    console.log("PUT",cuerpo);
+    return this._hc.put<di.experiencia>(`${this.baseURL}/experiencia`,cuerpo,{headers:this.headermaster});
+  }
   constructor( private _hc:HttpClient ){}
 
 }
