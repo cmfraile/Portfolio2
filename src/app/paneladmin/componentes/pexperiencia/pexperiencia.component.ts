@@ -57,6 +57,15 @@ export class PexperienciaComponent implements OnInit {
     this.forma.reset();
   }
 
+  borrar(){
+    if(this.seleccionado == null){this.quejadato = true ; return};
+    console.log(this.seleccionado);
+    const {_id:id , puesto} = this.seleccionado;
+    const alerta = confirm(`¿Desea borrar el item [${puesto}]?`);
+    if(!alerta){return};
+    this._td.experienciaDEL(id).subscribe(resp => {this.getexperiencia(true)},err => {this.getexperiencia(false)});
+  }
+
   editar(item:experiencia){
     this.seleccionado = item;
     const { ano:year , duracion:meses , descripcion , lugar , puesto } = this.forma.controls;

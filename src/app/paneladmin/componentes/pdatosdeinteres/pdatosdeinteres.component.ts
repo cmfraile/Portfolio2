@@ -22,15 +22,7 @@ export class PdatosdeinteresComponent implements OnInit {
     });
     this.getdinteres(true);
   }
-
-  /*
-  getexperiencia(exito:boolean){
-    if(exito){this._td.experienciaGET.subscribe(resp => this.experienciadata = resp);this.quejadato = false;}
-    this.seleccionado = null; this.forma.reset();
-    if(!this._hb.latido()){sessionStorage.clear();window.location.reload()};
-  }
-  */
- 
+   
   getdinteres(exito:boolean){
     if(exito){this._td.perfilGET.dinteres$.subscribe(resp => this.dinteresdata = resp);this.quejadato = false};
     this.seleccionado = null; this.forma.reset();

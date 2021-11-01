@@ -50,6 +50,12 @@ export class TraerdataService {
     console.log("PUT",cuerpo);
     return this._hc.put<di.experiencia>(`${this.baseURL}/experiencia`,cuerpo,{headers:this.headermaster});
   }
+  experienciaDEL(id:string){
+    return this._hc.delete<di.experiencia>(`${this.baseURL}/experiencia`,{headers:new HttpHeaders(
+      {token:sessionStorage.getItem('token') || "",id}
+    )});
+  }
+  
   constructor( private _hc:HttpClient ){}
 
 }
