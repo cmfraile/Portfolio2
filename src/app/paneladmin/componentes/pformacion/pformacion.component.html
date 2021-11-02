@@ -4,7 +4,7 @@
             <mat-form-field appearance="outline" class="dato formacion">
                 <mat-label>Formacion</mat-label>
                 <input  matInput
-                        formControlName="Formacion">
+                        formControlName="formacion">
             </mat-form-field>
             <mat-form-field appearance="outline" class="dato institucion">
                 <mat-label>institucion</mat-label>
@@ -12,12 +12,19 @@
                         formControlName="institucion">
             </mat-form-field>
             <mat-form-field appearance="outline" class="dato periodo">
-                <mat-label>periodo</mat-label>
-                <input  matInput
-                        formControlName="periodo">
+                <mat-label>Año de inicio</mat-label>
+                <input  type="number"
+                        matInput
+                        formControlName="periodoini">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="dato periodo">
+                <mat-label>Año de final</mat-label>
+                <input  type="number"
+                        matInput
+                        formControlName="periodofin">
             </mat-form-field>
             <div class="botonera">
-                <button class="botonaccion" title="Guardar"><i class="fas fa-pencil-alt"></i></button>
+                <button class="botonaccion" title="Guardar" (click)="guardar()"><i class="fas fa-pencil-alt"></i></button>
                 <button class="botonaccion" title="Limpiar"><i class="fas fa-eraser"></i></button>
                 <button class="botonaccion" title="Borrar"><i class="fas fa-times-circle"></i></button>
             </div>
@@ -27,21 +34,6 @@
     <div class="row inf">
         <div class="item">
             <p class="formacion">..</p>
-            <p class="periodo">1999-2001</p>
-            <p class="institucion">UDEMY</p>
-        </div>
-        <div class="item">
-            <p class="formacion">..</p>
-            <p class="periodo">1999-2001</p>
-            <p class="institucion">UDEMY</p>
-        </div>
-        <div class="item">
-            <p class="formacion">..</p>
-            <p class="periodo">1999-2001</p>
-            <p class="institucion">UDEMY</p>
-        </div>
-        <div class="item">
-            <p class="formacion">...</p>
             <p class="periodo">1999-2001</p>
             <p class="institucion">UDEMY</p>
         </div>

@@ -28,7 +28,7 @@ export class PexperienciaComponent implements OnInit {
   }
 
   getexperiencia(exito:boolean){
-    if(exito){this._td.experienciaGET.subscribe(resp => this.experienciadata = resp);this.quejadato = false;}
+    if(exito){this._td.perfilGET.experiencia$.subscribe(resp => this.experienciadata = resp);this.quejadato = false;}
     this.seleccionado = null; this.forma.reset();
     if(!this._hb.latido()){sessionStorage.clear();window.location.reload()};
   }

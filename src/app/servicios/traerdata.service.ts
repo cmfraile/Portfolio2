@@ -17,7 +17,6 @@ export class TraerdataService {
     formacion$ : this._hc.get<di.formacion[]>(`${this.baseURL}/formacion`),
     dinteres$ : this._hc.get<di.dinteres[]>(`${this.baseURL}/dinteres`)
   }
-  experienciaGET = this._hc.get<di.experiencia[]>(`${this.baseURL}/experiencia`);
 
   login(nombre:string,pass:string){
     return this._hc.post(`${this.baseURL}/admin/login`,{nombre,pass});
@@ -54,6 +53,11 @@ export class TraerdataService {
     return this._hc.delete<di.experiencia>(`${this.baseURL}/experiencia`,{headers:new HttpHeaders(
       {token:sessionStorage.getItem('token') || "",id}
     )});
+  }
+
+  //formacion
+  formacionPOST(formacion:di.formacion){
+    return this._hc.post<di.formacion>(`${this.baseURL}/formacion`,formacion,{headers:this.headermaster});
   }
   
   constructor( private _hc:HttpClient ){}
