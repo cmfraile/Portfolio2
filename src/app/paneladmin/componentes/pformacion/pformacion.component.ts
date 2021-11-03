@@ -33,13 +33,19 @@ export class PformacionComponent implements OnInit {
   }
   
   guardar(){
-    const { formacion , periodoini:ini , periodofin:fin , institucion } = this.forma.value;
-    if(ini > fin){this.forma.controls.periodoini.reset();this.forma.controls.periodofin.reset();this.quejadato = true};
-    if(ini <= fin){
-      if(ini == fin){this.forma.controls.periodofin.reset()};
-      const data:formacion = {materia:formacion,periodo:[ini,fin],institucion};
-      this._td.formacionPOST(data).subscribe(resp => {this.getformacion(true)},err => {this.getformacion(false)});
-    }
+    const { formacion , institucion , periodoini:ini , periodofin:fin } = this.forma.controls;
+    const {periodoini:init,periodofin:fint} = this.forma.value;
+    let periodomaster!:any[];
+    if(formacion.invalid || institucion.invalid || ini.invalid){this.quejadato = true;return};
+    if(init && fint == null || init && fint == init){periodomaster = [init]};
+    if(init < fint){periodomaster = [init,fint]};
+    if(init > fint){ini.reset();fin.reset();this.quejadato = true;return};
+    const data:any = {
+      materia : formacion.value,
+      periodo : periodomaster,
+      institucion : institucion.value
+    };
+    this._td.formacionPOST(data).subscribe(resp => {this.getformacion(true)},err => {this.getformacion(false)});
   }
 
   borrar(){
@@ -53,7 +59,7 @@ export class PformacionComponent implements OnInit {
   editar(item:formacion){
     this.seleccionado = item;
     const { formacion , periodoini:ini , periodofin:fin , institucion } = this.forma.controls;
-    formacion.setValue(item.materia);ini.setValue(item.periodo[0]);fin.setValue(item.periodo[1]);institucion.setValue(institucion);
+    formacion.setValue(item.materia);ini.setValue(item.periodo[0]);fin.setValue(item.periodo[1]);institucion.setValue(item.institucion);
   }
 
   limpiar(){
