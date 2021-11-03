@@ -1,8 +1,7 @@
 $transborde : 2px solid rgba(255,255,255,0.5)
 
 h3
-    margin-top: 50px
-    margin-bottom: 20px
+    margin: 50px 0px
     border-bottom: 2px solid white
 .tarjetafor,.tarjetaxp
     display: flex
@@ -29,6 +28,7 @@ h3
         min-width: 100%
         min-height: 20vh
         max-height: 300px
+        margin: 20px 0px
         .puesto,.ano,.duracion,.lugar
             min-height: 15%
             max-height: 15%
@@ -36,9 +36,12 @@ h3
             display: flex
             justify-content: center
             align-items: center
-        .ano,.duracion,.lugar
-            max-width: 33.3%
-            min-width: 33.3%
+        .ano,.duracion
+            max-width: 25%
+            min-width: 25%
+        .lugar
+            max-width: 50%
+            min-width: 50%
         .puesto
             border-bottom: $transborde
             min-width: 100%
@@ -55,7 +58,7 @@ h3
         min-width: 100%
         min-height: 10vh
         max-height: 200px
-        margin: 10px 0px
+        margin: 20px 0px
         .periodo,.lugar,.formacion
             display: flex
             justify-content: center
@@ -84,7 +87,7 @@ h3
             max-width: 50px
             border-bottom: 2px solid white
             border-right: 2px solid white
-            margin: 10px
+            margin: 20px
             padding: 10px
 
 @media (max-width:1120px)

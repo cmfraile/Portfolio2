@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { PeriodopipePipe } from './componentes/perfil/periodopipe.pipe';
+import { MesespipePipe } from './src/app/componentes/perfil/mesespipe.pipe';
+import { MesespiePipe } from './mesespie.pipe';
 
 const routes: Routes = [
   {path:'',component:MainComponent},
@@ -31,7 +33,9 @@ const routes: Routes = [
     PerfilComponent,
     TrabajosComponent,
     RrssComponent,
-    PeriodopipePipe
+    PeriodopipePipe,
+    MesespipePipe,
+    MesespiePipe
   ],
   imports: [
     BrowserModule,
