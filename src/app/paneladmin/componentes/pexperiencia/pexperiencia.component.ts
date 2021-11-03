@@ -59,7 +59,6 @@ export class PexperienciaComponent implements OnInit {
 
   borrar(){
     if(this.seleccionado == null){this.quejadato = true ; return};
-    console.log(this.seleccionado);
     const {_id:id , puesto} = this.seleccionado;
     const alerta = confirm(`¿Desea borrar el item [${puesto}]?`);
     if(!alerta){return};

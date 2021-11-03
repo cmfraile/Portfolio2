@@ -59,6 +59,11 @@ export class TraerdataService {
   formacionPOST(formacion:di.formacion){
     return this._hc.post<di.formacion>(`${this.baseURL}/formacion`,formacion,{headers:this.headermaster});
   }
+  formacionDEL(id:string){
+    return this._hc.delete<di.formacion>(`${this.baseURL}/formacion`,{headers:new HttpHeaders(
+      {token:sessionStorage.getItem('token') || "",id}
+    )});
+  }
   
   constructor( private _hc:HttpClient ){}
 
