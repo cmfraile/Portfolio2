@@ -32,10 +32,10 @@
     </div>
     <hr>
     <div class="row inf">
-        <div class="item">
-            <p class="formacion">..</p>
-            <p class="periodo">1999-2001</p>
-            <p class="institucion">UDEMY</p>
+        <div class="item" *ngFor="let dato of formaciondata">
+            <p class="formacion">{{dato.materia}}</p>
+            <p class="periodo">{{dato.periodo}}</p>
+            <p class="institucion">{{dato.institucion}}</p>
         </div>
     </div>
 </div>

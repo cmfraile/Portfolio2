@@ -37,7 +37,7 @@ export class PformacionComponent implements OnInit {
     if(ini <= fin){
       if(ini == fin){this.forma.controls.periodofin.reset()};
       const data:formacion = {materia:formacion,periodo:[ini,fin],institucion};
-      
+      this._td.formacionPOST(data).subscribe(resp => {this.getformacion(true)},err => {this.getformacion(false)});
     }
     
   }
