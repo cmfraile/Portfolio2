@@ -1,5 +1,5 @@
 <div class="main">
-    <div class="container">
+    <div *ngIf="anchomovil" class="container">
         <div class="row">
             <div *ngIf="!flagacceso" class="col logadmin"><app-logadmin></app-logadmin></div>
             <div *ngIf="flagacceso" class="col navadmin"><app-navadmin></app-navadmin></div>
@@ -12,5 +12,9 @@
             </div>
         </div>
     </div>
+    <div *ngIf="!anchomovil" class="container celularno">
+        <div class="row">
+            <p>panel deshabilitado para moviles</p>
+        </div>
+    </div>
 </div>
-
