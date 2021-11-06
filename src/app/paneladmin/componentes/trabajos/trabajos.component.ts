@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder , FormGroup } from '@angular/forms';
 import { trabajo } from '../../interfaces';
-import { UUID } from 'uuid-generator-ts';
 
 @Component({
   selector: 'app-trabajos',

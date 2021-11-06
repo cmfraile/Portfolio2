@@ -13,7 +13,7 @@ export class MainComponent implements OnInit {
 
   desplieguemenu!:string;
   flagacceso!:boolean;
-  anchomovil!:boolean;
+  anchomovil:boolean = (window.innerWidth <= 1000) ? false : true;
   
   constructor( private _mc:MenucambioService , private _hb:HeartbeatService ){
     this._mc.menuadmin$.subscribe(resp => this.desplieguemenu = resp);
@@ -23,7 +23,7 @@ export class MainComponent implements OnInit {
         let ancho:number = window.innerWidth;
         if(ancho <= 1000){this.anchomovil = false}else{this.anchomovil = true};
       })
-    ).subscribe(resp => {console.log(this.anchomovil)});
+    ).subscribe();
   }
 
   ngOnInit(): void {
