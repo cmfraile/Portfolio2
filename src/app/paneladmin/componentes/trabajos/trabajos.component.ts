@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder , FormGroup } from '@angular/forms';
+import { FormBuilder , FormGroup, Validators } from '@angular/forms';
 import { trabajo } from '../../interfaces';
+import { ValidadoresService } from '../../servicios/validadores.service';
 
 @Component({
   selector: 'app-trabajos',
@@ -12,15 +13,25 @@ export class TrabajosComponent implements OnInit {
   forma:FormGroup;
   trabajoseleccionado!:trabajo|undefined;
   
-  constructor( private _fb:FormBuilder ){
+  constructor( private _fb:FormBuilder , private _v:ValidadoresService ){
     this.forma = this._fb.group({
-      foto:'',nombre:'',descripcion:'',anio:'',autor:'',eap:''
+      foto:[File,[_v.validaprueba,Validators.required]],
+      nombre:['',[Validators.minLength(5),Validators.required]],
+      descripcion:['',[Validators.minLength(5),Validators.required]],
+      anio:[Number,[Validators.min(2000),Validators.required]],
+      autor:['',[Validators.minLength(5),Validators.required]],
+      eap:['',[Validators.minLength(5),Validators.required]]
     })
   }
 
-  formsave(){
-    console.log("item guardado")
+  fotoput(input:HTMLInputElement){
+    if(input.files == null){return};
+    this.forma.controls.foto.setValue(input.files[0]);
   }
+
+  formsave(){
+    console.log(this.forma.errors);
+  };
 
   formclean(){
     this.forma.reset();
@@ -37,7 +48,14 @@ export class TrabajosComponent implements OnInit {
     this.forma.setValue(curro);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }
+
+/*
+export declare interface ValidatorFn {
+  (control: AbstractControl): ValidationErrors | null;
+}
+*/
+
+
