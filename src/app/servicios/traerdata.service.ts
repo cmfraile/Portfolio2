@@ -10,7 +10,6 @@ export class TraerdataService {
 
   baseURL:string='http://localhost:8000/api';
   headermaster = new HttpHeaders({token:sessionStorage.getItem('token') || ""});
-
   ntairGET = this._hc.get<di.ntair[]>(`${this.baseURL}/ntair`).pipe(map(resp => resp[0]));
   perfilGET = {
     experiencia$ : this._hc.get<di.experiencia[]>(`${this.baseURL}/experiencia`),
@@ -59,10 +58,16 @@ export class TraerdataService {
   formacionPOST(formacion:di.formacion){
     return this._hc.post<di.formacion>(`${this.baseURL}/formacion`,formacion,{headers:this.headermaster});
   }
+  //FORMACIONPUT
   formacionDEL(id:string){
     return this._hc.delete<di.formacion>(`${this.baseURL}/formacion`,{headers:new HttpHeaders(
       {token:sessionStorage.getItem('token') || "",id}
     )});
+  }
+
+  //trabajos
+  trabajosPOST(data:di.trabajosPOST){
+    return this._hc.post<di.trabajosPOST>(`${this.baseURL}/trabajo/pwt`,data);
   }
   
   constructor( private _hc:HttpClient ){}
