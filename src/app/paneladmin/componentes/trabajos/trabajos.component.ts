@@ -12,10 +12,11 @@ export class TrabajosComponent implements OnInit {
 
   forma:FormGroup;
   trabajoseleccionado!:trabajo|undefined;
+  quejadato:boolean = false;
   
   constructor( private _fb:FormBuilder , private _v:ValidadoresService ){
     this.forma = this._fb.group({
-      foto:[File,[_v.validaprueba,Validators.required]],
+      foto:[File,[Validators.required,_v.validaprueba()]],
       nombre:['',[Validators.minLength(5),Validators.required]],
       descripcion:['',[Validators.minLength(5),Validators.required]],
       anio:[Number,[Validators.min(2000),Validators.required]],
@@ -30,7 +31,8 @@ export class TrabajosComponent implements OnInit {
   }
 
   formsave(){
-    console.log(this.forma.errors);
+    if(this.forma.invalid){ this.quejadato = true ; return };
+    
   };
 
   formclean(){

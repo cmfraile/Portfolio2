@@ -10,7 +10,7 @@ export class ValidadoresService {
 
   validaprueba():ValidatorFn{
     return (control:AbstractControl):ValidationErrors|null => {
-      return null
+      if(!control.value){return {sinfoto:true}}else{return null};
     }
   }
 
