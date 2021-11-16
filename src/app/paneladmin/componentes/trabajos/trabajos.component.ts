@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder , FormGroup, Validators } from '@angular/forms';
+import { trabajosPOST } from 'src/app/interfaces/todainterfaz';
 import { TraerdataService } from 'src/app/servicios/traerdata.service';
 import { trabajo } from '../../interfaces';
 import { ValidadoresService } from '../../servicios/validadores.service';
@@ -20,7 +21,7 @@ export class TrabajosComponent implements OnInit {
       foto:[File,[Validators.required,_v.validaprueba()]],
       nombre:[null,[Validators.minLength(5),Validators.required]],
       descripcion:[null,[Validators.minLength(5),Validators.required]],
-      anio:[Number,[Validators.min(2000),Validators.required]],
+      estado:[null,[Validators.min(2000),Validators.required]],
       autor:[null,[Validators.minLength(5),Validators.required]],
       eap:[null,[Validators.minLength(5),Validators.required]]
     })
@@ -28,27 +29,30 @@ export class TrabajosComponent implements OnInit {
 
   fotoput(input:HTMLInputElement){
     if(input.files == null){return};
-    this.forma.controls.foto.setValue(input.files[0]);
+    const fichero = input.files[0];
+    this.forma.patchValue({foto:fichero});
   }
 
   formsave(){
-    this._td.trabajosPOST(this.forma.value).subscribe(console.log,console.log);
+    const { foto , nombre , descripcion , estado , autor , eap } = this.forma.value;
+    const consulta:trabajosPOST = { foto,estado,descripcion,autor,
+    proyecto:nombre,
+    enlace:eap };
+    console.log(foto);
+    this._td.trabajosPOST(foto).subscribe(console.log);
   };
 
-  formclean(){
-    this.forma.reset();
-    this.trabajoseleccionado = undefined;
-  }
+  formclean(){}
 
-  formerase(){
-    console.log("funarse ITEM")
-  }
+  formerase(){}
   
+  /*
   formularioback(trabajo:trabajo){
     this.trabajoseleccionado = trabajo;
     let curro = this.trabajoseleccionado;
     this.forma.setValue(curro);
   }
+  */
 
   ngOnInit(): void {}
 
