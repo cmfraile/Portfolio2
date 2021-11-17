@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder , FormGroup, Validators } from '@angular/forms';
-import { trabajosPOST } from 'src/app/interfaces/todainterfaz';
+import { trabajo } from 'src/app/interfaces/todainterfaz';
 import { TraerdataService } from 'src/app/servicios/traerdata.service';
-import { trabajo } from '../../interfaces';
 import { ValidadoresService } from '../../servicios/validadores.service';
 
 @Component({
@@ -35,11 +34,12 @@ export class TrabajosComponent implements OnInit {
 
   formsave(){
     const { foto , nombre , descripcion , estado , autor , eap } = this.forma.value;
-    const consulta:trabajosPOST = { foto,estado,descripcion,autor,
+    const consulta:any = { foto,estado,descripcion,autor,
     proyecto:nombre,
     enlace:eap };
-    console.log(foto);
-    this._td.trabajosPOST(foto).subscribe(console.log);
+    let formulario = new FormData();
+    for(let x in consulta){formulario.append(`${x}`,consulta[x])};
+    this._td.trabajosPOST(formulario).subscribe(console.log);
   };
 
   formclean(){}
