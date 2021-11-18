@@ -1,43 +1,13 @@
 <div class="row trabajosc">
     <div class="col contenido">
-        <div class="tarjeta">
-            <div class="fototar" style="background-image: url(https://creazilla-store.fra1.digitaloceanspaces.com/emojis/46673/mahjong-red-dragon-emoji-clipart-xl.png);"></div>
+        <div class="tarjeta" *ngFor="let curro of curroinfo" >
+            <div class="fototar" style="background-image: url({{curro.foto}});"></div>
             <div class="contenidotar">
-                <div class="titulo">Titulo del proyecto</div>
-                <div class="releaseordev">Año de lanzamiento</div>
-                <div class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi accusamus ex praesentium vero doloribus neque reiciendis harum adipisci omnis, perspiciatis beatae esse officia voluptas pariatur?</div>
-                <div class="autor">Autor</div>
-                <div class="link">Enlace al proyecto</div>
-            </div>
-        </div>
-        <div class="tarjeta">
-            <div class="fototar" style="background-image: url(https://creazilla-store.fra1.digitaloceanspaces.com/emojis/46673/mahjong-red-dragon-emoji-clipart-xl.png);"></div>
-            <div class="contenidotar">
-                <div class="titulo">Titulo del proyecto</div>
-                <div class="releaseordev">Año de lanzamiento</div>
-                <div class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi accusamus ex praesentium vero doloribus neque reiciendis harum adipisci omnis, perspiciatis beatae esse officia voluptas pariatur?</div>
-                <div class="autor">Autor</div>
-                <div class="link">Enlace al proyecto</div>
-            </div>
-        </div>
-        <div class="tarjeta">
-            <div class="fototar" style="background-image: url(https://creazilla-store.fra1.digitaloceanspaces.com/emojis/46673/mahjong-red-dragon-emoji-clipart-xl.png);"></div>
-            <div class="contenidotar">
-                <div class="titulo">Titulo del proyecto</div>
-                <div class="releaseordev">Año de lanzamiento</div>
-                <div class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi accusamus ex praesentium vero doloribus neque reiciendis harum adipisci omnis, perspiciatis beatae esse officia voluptas pariatur?</div>
-                <div class="autor">Autor</div>
-                <div class="link">Enlace al proyecto</div>
-            </div>
-        </div>
-        <div class="tarjeta">
-            <div class="fototar" style="background-image: url(https://creazilla-store.fra1.digitaloceanspaces.com/emojis/46673/mahjong-red-dragon-emoji-clipart-xl.png);"></div>
-            <div class="contenidotar">
-                <div class="titulo">Titulo del proyecto</div>
-                <div class="releaseordev">Año de lanzamiento</div>
-                <div class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi accusamus ex praesentium vero doloribus neque reiciendis harum adipisci omnis, perspiciatis beatae esse officia voluptas pariatur?</div>
-                <div class="autor">Autor</div>
-                <div class="link">Enlace al proyecto</div>
+                <div class="titulo">{{curro.proyecto}}</div>
+                <div class="releaseordev">{{curro.estado}}</div>
+                <div class="descripcion">{{curro.descripcion}}</div>
+                <div class="autor">{{curro.autor}}</div>
+                <div class="link">Aqui vamos a tener que hacer una carpinteria</div>
             </div>
         </div>
     </div>

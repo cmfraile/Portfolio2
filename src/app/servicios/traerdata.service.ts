@@ -9,8 +9,10 @@ import * as di from '../interfaces/todainterfaz';
 export class TraerdataService {
 
   baseURL:string='http://localhost:8000/api';
+  
   headermaster = new HttpHeaders({token:sessionStorage.getItem('token') || ""});
   ntairGET = this._hc.get<di.ntair[]>(`${this.baseURL}/ntair`).pipe(map(resp => resp[0]));
+  trabajosGET = this._hc.get<di.trabajo[]>(`${this.baseURL}/trabajo`);
   perfilGET = {
     experiencia$ : this._hc.get<di.experiencia[]>(`${this.baseURL}/experiencia`),
     formacion$ : this._hc.get<di.formacion[]>(`${this.baseURL}/formacion`),
