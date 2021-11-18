@@ -17,7 +17,7 @@ export class TrabajosComponent implements OnInit {
   
   constructor( private _fb:FormBuilder , private _v:ValidadoresService , private _td:TraerdataService ){
     this.forma = this._fb.group({
-      foto:[File,[Validators.required,_v.validaprueba()]],
+      foto:[null,[Validators.required,_v.validaprueba()]],
       nombre:[null,[Validators.minLength(5),Validators.required]],
       descripcion:[null,[Validators.minLength(5),Validators.required]],
       estado:[null,[Validators.min(2000),Validators.required]],
@@ -33,6 +33,7 @@ export class TrabajosComponent implements OnInit {
   }
 
   formsave(){
+    if(this.forma.invalid){console.log('formulario invalido') ; return };
     const { foto , nombre , descripcion , estado , autor , eap } = this.forma.value;
     const consulta:any = { foto,estado,descripcion,autor,
     proyecto:nombre,

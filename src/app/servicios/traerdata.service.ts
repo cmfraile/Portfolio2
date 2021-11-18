@@ -67,7 +67,7 @@ export class TraerdataService {
 
   //trabajos
   trabajosPOST(data:FormData){
-    return this._hc.post(`${this.baseURL}/trabajo/pwt`,data);
+    return this._hc.post(`${this.baseURL}/trabajo`,data);
   }
   
   constructor( private _hc:HttpClient ){}
