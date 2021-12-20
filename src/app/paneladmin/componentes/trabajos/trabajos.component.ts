@@ -43,12 +43,11 @@ export class TrabajosComponent implements OnInit {
   }
 
   editartrabajo(item:trabajo){
+    item.fotoedit = false;
     this.trabajoseleccionado = item;
-    const { foto , nombre , descripcion , estado , autor , eap } = this.forma.controls;
-    console.log(this.forma.controls);
+    const { nombre , descripcion , estado , autor , eap } = this.forma.controls;
+    nombre.setValue(item.proyecto);descripcion.setValue(item.descripcion);estado.setValue(item.estado);autor.setValue(item.autor);eap.setValue(item.enlace);
   }
-
-
 
   formsave(){
     if(this.forma.invalid){console.log('formulario invalido') ; return };
@@ -58,8 +57,8 @@ export class TrabajosComponent implements OnInit {
     enlace:eap };
     let formulario = new FormData();
     for(let x in consulta){formulario.append(`${x}`,consulta[x])};
-    //this._td.trabajosPOST(formulario).subscribe(console.log);
     console.log(consulta);
+    //this._td.trabajosPOST(formulario).subscribe(() => {this.getrabajo(true)},() => {});
   };
 
   formclean(){ this.trabajoseleccionado = null ; this.quejadato = false ; this.forma.reset(); };
