@@ -44,20 +44,18 @@
     </div>
     <div class="row">
         <div class="col trabajos">
-            <!--
-            <div class="trabajoitem">
+            <div class="trabajoitem" *ngFor="let dato of trabajosdata" (click)="editartrabajo(dato)" >
                 <div class="grupofotodel">
-                    <div class="foto" style="background-image: url();"></div>
+                    <div class="foto" style="background-image: url({{dato.foto}});"></div>
                 </div>
                 <div class="grupodatostring">
-                    <div class="nombre"></div>
-                    <div class="anio"></div>
-                    <div class="descripcion"></div>
-                    <div class="autor"></div>
-                    <div class="enlace"></div>
+                    <div class="nombre">{{dato.proyecto}}</div>
+                    <div class="anio">{{dato.estado}}</div>
+                    <div class="descripcion">{{dato.descripcion}}</div>
+                    <div class="autor">{{dato.autor}}</div>
+                    <div class="enlace">{{dato.enlace}}</div>
                 </div>
             </div>
-            -->
         </div>
     </div>
 </div>

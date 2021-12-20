@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder , FormGroup, Validators } from '@angular/forms';
 import { trabajo } from 'src/app/interfaces/todainterfaz';
 import { TraerdataService } from 'src/app/servicios/traerdata.service';
+import { HeartbeatService } from '../../servicios/heartbeat.service';
 import { ValidadoresService } from '../../servicios/validadores.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-trabajos',
@@ -12,10 +14,11 @@ import { ValidadoresService } from '../../servicios/validadores.service';
 export class TrabajosComponent implements OnInit {
 
   forma:FormGroup;
-  trabajoseleccionado!:trabajo|undefined;
+  trabajoseleccionado:trabajo|null = null;
+  trabajosdata!:trabajo[];
   quejadato:boolean = false;
   
-  constructor( private _fb:FormBuilder , private _v:ValidadoresService , private _td:TraerdataService ){
+  constructor( private _fb:FormBuilder , private _v:ValidadoresService , private _td:TraerdataService , private _hb:HeartbeatService ){
     this.forma = this._fb.group({
       foto:[null,[Validators.required,_v.validaprueba()]],
       nombre:[null,[Validators.minLength(5),Validators.required]],
@@ -23,7 +26,8 @@ export class TrabajosComponent implements OnInit {
       estado:[null,[Validators.min(2000),Validators.required]],
       autor:[null,[Validators.minLength(5),Validators.required]],
       eap:[null,[Validators.minLength(5),Validators.required]]
-    })
+    });
+    this.getrabajo(true);
   }
 
   fotoput(input:HTMLInputElement){
@@ -32,7 +36,19 @@ export class TrabajosComponent implements OnInit {
     this.forma.patchValue({foto:fichero});
   }
 
-  
+  getrabajo(exito:boolean){
+    if(exito){this._td.trabajosGET.pipe(tap(console.log)).subscribe(resp => this.trabajosdata = resp);this.quejadato = false};
+    this.trabajoseleccionado = null ; this.forma.reset();
+    if(!this._hb.latido()){sessionStorage.clear();window.location.reload()};
+  }
+
+  editartrabajo(item:trabajo){
+    this.trabajoseleccionado = item;
+    const { foto , nombre , descripcion , estado , autor , eap } = this.forma.controls;
+    console.log(this.forma.controls);
+  }
+
+
 
   formsave(){
     if(this.forma.invalid){console.log('formulario invalido') ; return };
@@ -42,10 +58,11 @@ export class TrabajosComponent implements OnInit {
     enlace:eap };
     let formulario = new FormData();
     for(let x in consulta){formulario.append(`${x}`,consulta[x])};
-    this._td.trabajosPOST(formulario).subscribe(console.log);
+    //this._td.trabajosPOST(formulario).subscribe(console.log);
+    console.log(consulta);
   };
 
-  formclean(){this.forma.reset() ; this.trabajoseleccionado = undefined};
+  formclean(){ this.trabajoseleccionado = null ; this.quejadato = false ; this.forma.reset(); };
 
   formerase(){}
   
