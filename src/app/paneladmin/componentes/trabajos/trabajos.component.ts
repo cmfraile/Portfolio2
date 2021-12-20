@@ -32,6 +32,8 @@ export class TrabajosComponent implements OnInit {
     this.forma.patchValue({foto:fichero});
   }
 
+  
+
   formsave(){
     if(this.forma.invalid){console.log('formulario invalido') ; return };
     const { foto , nombre , descripcion , estado , autor , eap } = this.forma.value;
@@ -43,7 +45,7 @@ export class TrabajosComponent implements OnInit {
     this._td.trabajosPOST(formulario).subscribe(console.log);
   };
 
-  formclean(){}
+  formclean(){this.forma.reset() ; this.trabajoseleccionado = undefined};
 
   formerase(){}
   
