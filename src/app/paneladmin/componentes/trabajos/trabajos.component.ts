@@ -37,7 +37,7 @@ export class TrabajosComponent implements OnInit {
   }
 
   getrabajo(exito:boolean){
-    if(exito){this._td.trabajosGET.pipe(tap(console.log)).subscribe(resp => this.trabajosdata = resp);this.quejadato = false};
+    if(exito){this._td.trabajosGET.subscribe(resp => this.trabajosdata = resp);this.quejadato = false};
     this.trabajoseleccionado = null ; this.forma.reset();
     if(!this._hb.latido()){sessionStorage.clear();window.location.reload()};
   }
@@ -60,11 +60,10 @@ export class TrabajosComponent implements OnInit {
         autor : valores.autor,
         enlace : valores.eap
       };
-      console.log("ida",data);
       let formulario = new FormData();
       formulario.append('id',id);
       for(let x in data){formulario.append(`${x}`,data[x])};
-      this._td.trabajosPUT(formulario).subscribe(resp => console.log("vuelta",resp));
+      this._td.trabajosPUT(formulario).subscribe(resp => {this.getrabajo(true)},err => {this.getrabajo(false)});
     } else {
       if(this.forma.invalid){console.log('formulario invalido') ; return };
       const { foto , nombre , descripcion , estado , autor , eap } = this.forma.value;
@@ -86,24 +85,6 @@ export class TrabajosComponent implements OnInit {
     if(!alerta){return};
     this._td.trabajosDEL(id).subscribe(resp => {this.getrabajo(true)},err => (this.getrabajo(false)));
   }
-
-  /*
-  borrar(){
-    if(this.seleccionado == null){this.quejadato = true ; return};
-    const {_id:id , materia} = this.seleccionado;
-    const alerta = confirm(`¿Desea borrar el item [${materia}]?`);
-    if(!alerta){return};
-    this._td.formacionDEL(id).subscribe(resp => {this.getformacion(true)},err => {this.getformacion(false)});
-  }
-  */
-  
-  /*
-  formularioback(trabajo:trabajo){
-    this.trabajoseleccionado = trabajo;
-    let curro = this.trabajoseleccionado;
-    this.forma.setValue(curro);
-  }
-  */
 
   ngOnInit(): void {}
 
