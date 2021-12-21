@@ -48,22 +48,7 @@ export class TrabajosComponent implements OnInit {
     nombre.setValue(item.proyecto);descripcion.setValue(item.descripcion);estado.setValue(item.estado);autor.setValue(item.autor);eap.setValue(item.enlace);foto.setValue(item.foto);
   }
 
-  /*
   formsave(){
-    if(this.forma.invalid){console.log('formulario invalido') ; return };
-    const { foto , nombre , descripcion , estado , autor , eap } = this.forma.value;
-    const consulta:any = { foto,estado,descripcion,autor,
-    proyecto:nombre,
-    enlace:eap };
-    let formulario = new FormData();
-    for(let x in consulta){formulario.append(`${x}`,consulta[x])};
-    console.log(consulta,typeof(consulta.foto));
-    //this._td.trabajosPOST(formulario).subscribe(() => {this.getrabajo(true)},() => {});
-  };
-  */
-
-  formsave(){
-    //if(this.forma.invalid){this.quejadato = true ; return};
     if(this.trabajoseleccionado !== null){
       const { _id:id } = this.trabajoseleccionado;
       const valores = this.forma.value
@@ -80,12 +65,37 @@ export class TrabajosComponent implements OnInit {
       formulario.append('id',id);
       for(let x in data){formulario.append(`${x}`,data[x])};
       this._td.trabajosPUT(formulario).subscribe(resp => console.log("vuelta",resp));
+    } else {
+      if(this.forma.invalid){console.log('formulario invalido') ; return };
+      const { foto , nombre , descripcion , estado , autor , eap } = this.forma.value;
+      const consulta:any = { foto,estado,descripcion,autor,
+      proyecto:nombre,
+      enlace:eap };
+      let formulario = new FormData();
+      for(let x in consulta){formulario.append(`${x}`,consulta[x])};
+      this._td.trabajosPOST(formulario).subscribe(resp => {this.getrabajo(true)},err => {this.getrabajo(false)});
     }
   }
 
   formclean(){ this.trabajoseleccionado = null ; this.quejadato = false ; this.forma.reset(); };
 
-  formerase(){}
+  formerase(){
+    if(this.trabajoseleccionado == null){this.quejadato = true ; return};
+    const {_id:id, proyecto} = this.trabajoseleccionado;
+    const alerta = confirm(`¿Desea borrar el item [${proyecto}]?`);
+    if(!alerta){return};
+    this._td.trabajosDEL(id).subscribe(resp => {this.getrabajo(true)},err => (this.getrabajo(false)));
+  }
+
+  /*
+  borrar(){
+    if(this.seleccionado == null){this.quejadato = true ; return};
+    const {_id:id , materia} = this.seleccionado;
+    const alerta = confirm(`¿Desea borrar el item [${materia}]?`);
+    if(!alerta){return};
+    this._td.formacionDEL(id).subscribe(resp => {this.getformacion(true)},err => {this.getformacion(false)});
+  }
+  */
   
   /*
   formularioback(trabajo:trabajo){

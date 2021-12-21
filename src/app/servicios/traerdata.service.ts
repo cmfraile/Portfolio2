@@ -69,10 +69,15 @@ export class TraerdataService {
 
   //trabajos
   trabajosPOST(data:FormData){
-    return this._hc.post(`${this.baseURL}/trabajo`,data);
+    return this._hc.post<di.trabajo>(`${this.baseURL}/trabajo`,data);
   }
   trabajosPUT(data:FormData){
-    return this._hc.put(`${this.baseURL}/trabajo`,data);
+    return this._hc.put<di.trabajo>(`${this.baseURL}/trabajo`,data);
+  }
+  trabajosDEL(id:string){
+    return this._hc.delete<di.trabajo>(`${this.baseURL}/trabajo`,{headers:new HttpHeaders(
+      {token:sessionStorage.getItem('token') || "",id}
+    )});
   }
   
   constructor( private _hc:HttpClient ){}
