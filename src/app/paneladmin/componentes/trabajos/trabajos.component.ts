@@ -90,10 +90,4 @@ export class TrabajosComponent implements OnInit {
 
 }
 
-/*
-export declare interface ValidatorFn {
-  (control: AbstractControl): ValidationErrors | null;
-}
-*/
-
 

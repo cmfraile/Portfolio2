@@ -69,10 +69,10 @@ export class TraerdataService {
 
   //trabajos
   trabajosPOST(data:FormData){
-    return this._hc.post<di.trabajo>(`${this.baseURL}/trabajo`,data);
+    return this._hc.post<di.trabajo>(`${this.baseURL}/trabajo`,data,{headers:this.headermaster});
   }
   trabajosPUT(data:FormData){
-    return this._hc.put<di.trabajo>(`${this.baseURL}/trabajo`,data);
+    return this._hc.put<di.trabajo>(`${this.baseURL}/trabajo`,data,{headers:this.headermaster});
   }
   trabajosDEL(id:string){
     return this._hc.delete<di.trabajo>(`${this.baseURL}/trabajo`,{headers:new HttpHeaders(
