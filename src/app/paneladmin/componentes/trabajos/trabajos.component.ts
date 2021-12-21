@@ -43,12 +43,12 @@ export class TrabajosComponent implements OnInit {
   }
 
   editartrabajo(item:trabajo){
-    item.fotoedit = false;
     this.trabajoseleccionado = item;
-    const { nombre , descripcion , estado , autor , eap } = this.forma.controls;
-    nombre.setValue(item.proyecto);descripcion.setValue(item.descripcion);estado.setValue(item.estado);autor.setValue(item.autor);eap.setValue(item.enlace);
+    const { foto , nombre , descripcion , estado , autor , eap } = this.forma.controls;
+    nombre.setValue(item.proyecto);descripcion.setValue(item.descripcion);estado.setValue(item.estado);autor.setValue(item.autor);eap.setValue(item.enlace);foto.setValue(item.foto);
   }
 
+  /*
   formsave(){
     if(this.forma.invalid){console.log('formulario invalido') ; return };
     const { foto , nombre , descripcion , estado , autor , eap } = this.forma.value;
@@ -57,9 +57,31 @@ export class TrabajosComponent implements OnInit {
     enlace:eap };
     let formulario = new FormData();
     for(let x in consulta){formulario.append(`${x}`,consulta[x])};
-    console.log(consulta);
+    console.log(consulta,typeof(consulta.foto));
     //this._td.trabajosPOST(formulario).subscribe(() => {this.getrabajo(true)},() => {});
   };
+  */
+
+  formsave(){
+    //if(this.forma.invalid){this.quejadato = true ; return};
+    if(this.trabajoseleccionado !== null){
+      const { _id:id } = this.trabajoseleccionado;
+      const valores = this.forma.value
+      const data:any = {
+        foto : valores.foto,
+        proyecto : valores.nombre,
+        descripcion : valores.descripcion,
+        estado : valores.estado,
+        autor : valores.autor,
+        enlace : valores.eap
+      };
+      console.log("ida",data);
+      let formulario = new FormData();
+      formulario.append('id',id);
+      for(let x in data){formulario.append(`${x}`,data[x])};
+      this._td.trabajosPUT(formulario).subscribe(resp => console.log("vuelta",resp));
+    }
+  }
 
   formclean(){ this.trabajoseleccionado = null ; this.quejadato = false ; this.forma.reset(); };
 
