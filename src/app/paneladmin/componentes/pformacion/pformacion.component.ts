@@ -32,6 +32,7 @@ export class PformacionComponent implements OnInit {
     if(!this._hb.latido()){sessionStorage.clear();window.location.reload()};
   }
   
+  /*
   guardar(){
     const { formacion , institucion , periodoini:ini , periodofin:fin } = this.forma.controls;
     const {periodoini:init,periodofin:fint} = this.forma.value;
@@ -46,6 +47,23 @@ export class PformacionComponent implements OnInit {
       institucion : institucion.value
     };
     this._td.formacionPOST(data).subscribe(resp => {this.getformacion(true)},err => {this.getformacion(false)});
+  }
+  */
+
+  guardar(){
+    if(this.forma.invalid){this.quejadato = true ; return};
+    if(this.seleccionado !== null){
+      const valores = this.forma.value;
+      const {_id:id} = this.seleccionado;
+      const data:formacion = {
+        materia : valores.materia,
+        periodo : [valores.periodoini,valores.periodofin||null],
+        institucion : valores.institucion,
+        id : this.seleccionado.id
+      }
+      this._td.formacionPUT(data).
+    }
+    const { formacion , institucion , periodoini:ini , periodofin:fin } = this.forma.controls;
   }
 
   borrar(){
