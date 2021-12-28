@@ -60,7 +60,22 @@ export class PformacionComponent implements OnInit {
   }
   */
 
-  
+  guardar(){
+    if(this.forma.invalid){this.quejadato = true ; return};
+    const { formacion , institucion , periodoini:ini , periodofin:fin } = this.forma.value;
+    let periodomaster!:[number,number|null];
+    if(fin == null || ini == fin){periodomaster == [ini,null]};
+    if(ini < fin){periodomaster = [ini,fin]};
+    if(ini > fin){this.quejadato = true ; return};
+    const data:any = { materia:formacion,periodo:periodomaster,institucion:institucion};
+    if(this.seleccionado !== null){
+      const {_id:id} = this.seleccionado;
+      this._td.formacionPUT(data,id).subscribe(resp => this.getformacion(true),err => this.getformacion(false));
+      return;
+    }else{
+      this._td.formacionPOST(data).subscribe(resp => this.getformacion(true),err => this.getformacion(false));
+    }
+  }
 
   borrar(){
     if(this.seleccionado == null){this.quejadato = true ; return};
