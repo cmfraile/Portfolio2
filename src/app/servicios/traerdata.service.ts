@@ -60,8 +60,9 @@ export class TraerdataService {
   formacionPOST(formacion:di.formacion){
     return this._hc.post<di.formacion>(`${this.baseURL}/formacion`,formacion,{headers:this.headermaster});
   }
-  formacionPUT(formacion:di.formacion){
-    return this._hc.put<di.formacion>(`${this.baseURL}/formacion`,formacion,{headers:this.headermaster});
+  formacionPUT(formacion:di.formacion,id:string){
+    const cuerpo = {id,...formacion};
+    return this._hc.put<di.formacion>(`${this.baseURL}/formacion`,cuerpo,{headers:this.headermaster});
   }
   formacionDEL(id:string){
     return this._hc.delete<di.formacion>(`${this.baseURL}/formacion`,{headers:new HttpHeaders(

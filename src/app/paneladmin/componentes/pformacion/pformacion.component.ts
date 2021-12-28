@@ -3,6 +3,7 @@ import { FormBuilder , FormGroup , Validators } from '@angular/forms';
 import { formacion } from 'src/app/interfaces/todainterfaz';
 import { TraerdataService } from 'src/app/servicios/traerdata.service';
 import { HeartbeatService } from '../../servicios/heartbeat.service';
+import { ValidadoresService } from '../../servicios/validadores.service';
 
 @Component({
   selector: 'app-pformacion',
@@ -21,7 +22,7 @@ export class PformacionComponent implements OnInit {
       formacion:['',[Validators.required,Validators.minLength(5)]],
       periodoini:[Number,[Validators.required,Validators.min(2000)]],
       periodofin:[Number],
-      institucion:['',[Validators.required,Validators.minLength(5)]],
+      institucion:['',[Validators.required,Validators.minLength(5)]]
     });
     this.getformacion(true);
   }
@@ -31,39 +32,28 @@ export class PformacionComponent implements OnInit {
     this.seleccionado = null ; this.forma.reset();
     if(!this._hb.latido()){sessionStorage.clear();window.location.reload()};
   }
-  
-  /*
+
   guardar(){
-    const { formacion , institucion , periodoini:ini , periodofin:fin } = this.forma.controls;
-    const {periodoini:init,periodofin:fint} = this.forma.value;
-    let periodomaster!:any[];
-    if(formacion.invalid || institucion.invalid || ini.invalid){this.quejadato = true;return};
-    if(init && fint == null || init && fint == init){periodomaster = [init]};
-    if(init < fint){periodomaster = [init,fint]};
-    if(init > fint){ini.reset();fin.reset();this.quejadato = true;return};
-    const data:any = {
+    if(this.forma.invalid){this.quejadato = true ; return};
+    const { formacion , institucion , periodoini:init , periodofin:fint } = this.forma.controls;
+    let periodomaster!:[number,number|null];
+    if(formacion.invalid || institucion.invalid || init.invalid){this.quejadato = true;return};
+    if(init && fint == null || init && fint == init){periodomaster = [init.value,null]};
+    if(init < fint){periodomaster = [init.value,fint.value]};
+    if(init > fint){init.reset();fint.reset();this.quejadato = true;return};
+    const data:formacion = {
       materia : formacion.value,
       periodo : periodomaster,
       institucion : institucion.value
     };
-    this._td.formacionPOST(data).subscribe(resp => {this.getformacion(true)},err => {this.getformacion(false)});
-  }
-  */
-
-  guardar(){
-    if(this.forma.invalid){this.quejadato = true ; return};
     if(this.seleccionado !== null){
-      const valores = this.forma.value;
       const {_id:id} = this.seleccionado;
-      const data:formacion = {
-        materia : valores.materia,
-        periodo : [valores.periodoini,valores.periodofin||null],
-        institucion : valores.institucion,
-        id : this.seleccionado.id
-      }
-      this._td.formacionPUT(data).
+      console.log(data,id);
+      this._td.formacionPUT(data,id).subscribe(resp => this.getformacion(true),err => this.getformacion(false));
+      return;
     }
-    const { formacion , institucion , periodoini:ini , periodofin:fin } = this.forma.controls;
+    console.log(data);
+    this._td.formacionPOST(data).subscribe(resp => this.getformacion(true),err => this.getformacion(false));
   }
 
   borrar(){
