@@ -33,28 +33,34 @@ export class PformacionComponent implements OnInit {
     if(!this._hb.latido()){sessionStorage.clear();window.location.reload()};
   }
 
+  /*
   guardar(){
     if(this.forma.invalid){this.quejadato = true ; return};
     const { formacion , institucion , periodoini:init , periodofin:fint } = this.forma.controls;
     let periodomaster!:[number,number|null];
     if(formacion.invalid || institucion.invalid || init.invalid){this.quejadato = true;return};
-    if(init && fint == null || init && fint == init){periodomaster = [init.value,null]};
-    if(init < fint){periodomaster = [init.value,fint.value]};
-    if(init > fint){init.reset();fint.reset();this.quejadato = true;return};
-    const data:formacion = {
+    if(init.value && fint.value == null || fint.value == init.value){periodomaster = [init.value,null]};
+    if(init.value < fint.value){periodomaster = [init.value,fint.value]};
+    if(init.value > fint.value){init.reset();fint.reset();this.quejadato = true;return};
+    const data:any = {
       materia : formacion.value,
       periodo : periodomaster,
       institucion : institucion.value
     };
+
+    console.log(data,this.forma.controls.periodofin.valid);
+
     if(this.seleccionado !== null){
       const {_id:id} = this.seleccionado;
-      console.log(data,id);
       this._td.formacionPUT(data,id).subscribe(resp => this.getformacion(true),err => this.getformacion(false));
       return;
     }
-    console.log(data);
     this._td.formacionPOST(data).subscribe(resp => this.getformacion(true),err => this.getformacion(false));
+
   }
+  */
+
+  
 
   borrar(){
     if(this.seleccionado == null){this.quejadato = true ; return};
