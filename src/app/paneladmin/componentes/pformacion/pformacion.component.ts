@@ -64,9 +64,9 @@ export class PformacionComponent implements OnInit {
     if(this.forma.invalid){this.quejadato = true ; return};
     const { formacion , institucion , periodoini:ini , periodofin:fin } = this.forma.value;
     let periodomaster!:[number,number|null];
-    if(fin == null){periodomaster == [ini,null]};
+    if(fin == null){periodomaster = [ini,null]};
     if(typeof(fin) == 'number'){
-      if(ini == fin){periodomaster == [ini,null]};
+      if(ini == fin){periodomaster = [ini,null]};
       if(ini < fin){periodomaster = [ini,fin]};
       if(ini > fin){ this.quejadato = true ; this.forma.controls.periodoini.reset() ; this.forma.controls.periodofin.reset() ; return };
     }
@@ -78,7 +78,6 @@ export class PformacionComponent implements OnInit {
     }else{
       this._td.formacionPOST(data).subscribe(resp => this.getformacion(true),err => this.getformacion(false));
     }
-
   }
 
   borrar(){
