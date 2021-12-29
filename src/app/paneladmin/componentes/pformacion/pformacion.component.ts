@@ -63,14 +63,14 @@ export class PformacionComponent implements OnInit {
   guardar(){
     if(this.forma.invalid){this.quejadato = true ; return};
     const { formacion , institucion , periodoini:ini , periodofin:fin } = this.forma.value;
-    let periodomaster!:[number,number|null];
-    if(fin == null){periodomaster = [ini,null]};
+    let periodomaster!:[number,number]|[number];
+    if(fin == null){periodomaster = [ini]};
     if(typeof(fin) == 'number'){
-      if(ini == fin){periodomaster = [ini,null]};
+      if(ini == fin){periodomaster = [ini]};
       if(ini < fin){periodomaster = [ini,fin]};
       if(ini > fin){ this.quejadato = true ; this.forma.controls.periodoini.reset() ; this.forma.controls.periodofin.reset() ; return };
     }
-    const data:any = { materia:formacion,periodo:periodomaster,institucion:institucion};
+    const data:any = { materia:formacion,periodo:periodomaster,institucion:institucion};console.log(data);
     if(this.seleccionado !== null){
       const {_id:id} = this.seleccionado;
       this._td.formacionPUT(data,id).subscribe(resp => this.getformacion(true),err => this.getformacion(false));
