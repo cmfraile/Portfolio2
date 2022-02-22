@@ -4,7 +4,6 @@ import { trabajo } from 'src/app/interfaces/todainterfaz';
 import { TraerdataService } from 'src/app/servicios/traerdata.service';
 import { HeartbeatService } from '../../servicios/heartbeat.service';
 import { ValidadoresService } from '../../servicios/validadores.service';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-trabajos',
@@ -25,7 +24,8 @@ export class TrabajosComponent implements OnInit {
       descripcion:[null,[Validators.minLength(5),Validators.required]],
       estado:[null,[Validators.min(2000),Validators.required]],
       autor:[null,[Validators.minLength(5),Validators.required]],
-      eap:[null,[Validators.minLength(5),Validators.required]]
+      eap:[null],
+      eaptxt:[null]
     });
     this.getrabajo(true);
   }
@@ -42,10 +42,10 @@ export class TrabajosComponent implements OnInit {
     if(!this._hb.latido()){sessionStorage.clear();window.location.reload()};
   }
 
-  editartrabajo(item:trabajo){
+  editartrabajo(item:any){
     this.trabajoseleccionado = item;
-    const { foto , nombre , descripcion , estado , autor , eap } = this.forma.controls;
-    nombre.setValue(item.proyecto);descripcion.setValue(item.descripcion);estado.setValue(item.estado);autor.setValue(item.autor);eap.setValue(item.enlace);foto.setValue(item.foto);
+    const { foto , nombre , descripcion , estado , autor , eap ,eaptxt } = this.forma.controls;
+    for(let x in this.forma.controls){this.forma.controls[x].setValue(item[x])};
   }
 
   formsave(){
@@ -58,7 +58,8 @@ export class TrabajosComponent implements OnInit {
         descripcion : valores.descripcion,
         estado : valores.estado,
         autor : valores.autor,
-        enlace : valores.eap
+        enlace : valores.eap,
+        enlacetxt : valores.eaptxt
       };
       let formulario = new FormData();
       formulario.append('id',id);
@@ -66,10 +67,10 @@ export class TrabajosComponent implements OnInit {
       this._td.trabajosPUT(formulario).subscribe(resp => {this.getrabajo(true)},err => {this.getrabajo(false)});
     } else {
       if(this.forma.invalid){console.log('formulario invalido') ; return };
-      const { foto , nombre , descripcion , estado , autor , eap } = this.forma.value;
+      const { foto , nombre , descripcion , estado , autor , eap , eaptxt } = this.forma.value;
       const consulta:any = { foto,estado,descripcion,autor,
       proyecto:nombre,
-      enlace:eap };
+      enlace:eap , enlacetxt:eaptxt };
       let formulario = new FormData();
       for(let x in consulta){formulario.append(`${x}`,consulta[x])};
       this._td.trabajosPOST(formulario).subscribe(resp => {this.getrabajo(true)},err => {this.getrabajo(false)});

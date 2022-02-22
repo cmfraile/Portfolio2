@@ -13,7 +13,7 @@ export class TrabajosComponent implements OnInit{
   curroinfo!:trabajo[];
   
   constructor( private _td:TraerdataService ){
-    this._td.trabajosGET.pipe(tap<trabajo[]>(console.log)).subscribe(resp => this.curroinfo = resp);
+    this._td.trabajosGET.subscribe(resp => this.curroinfo = resp);
   }
   
   ngOnInit(): void {}
