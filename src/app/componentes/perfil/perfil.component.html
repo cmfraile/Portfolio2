@@ -6,14 +6,14 @@
             <div class="ano">{{dato.year}}</div>
             <div class="duracion">{{dato.meses | mesespie}}</div>
             <div class="lugar">{{dato.lugar}}</div>
-            <div class="descripcion">{{dato.descripcion}} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae reiciendis a optio necessitatibus corporis consectetur molestiae asperiores odio fugiat velit.</div>
+            <div class="descripcion">{{dato.descripcion}}</div>
         </div>
     </div>
     <div class="col vacio"></div>
     <div class="col contenido formaciongrupo">
         <h3>formación académica</h3>
         <div class="tarjetafor" *ngFor="let dato of formacion" >
-            <div class="formacion">{{dato.materia}} Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+            <div class="formacion">{{dato.materia}}</div>
             <div class="periodo">{{dato.periodo | periodopipe}}</div>
             <div class="lugar">{{dato.institucion}}</div>
         </div>
