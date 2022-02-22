@@ -16,7 +16,7 @@ $transborde : 2px solid rgba(255,255,255,0.5)
         min-height: 90vh
         flex-direction: column
         .tarjeta
-            margin: 10px 0px
+            margin: 30px 0px
             min-height: 25vh
             max-width: 80%
             display: flex
@@ -50,15 +50,22 @@ $transborde : 2px solid rgba(255,255,255,0.5)
         max-width: 50%
     .descripcion
         padding: 10px
-        min-height: 80%
+        min-height: 150px
         max-height: 80%
         text-align: justify
+        text-indent: 5%
     .titulo,.releaseordev
         border-bottom: $transborde
     .autor,.link
         border-top: $transborde
     .titulo,.autor
         border-right: $transborde
+    .link
+        a
+            text-decoration: none
+            color: white
+            &:hover
+                color: yellow
 
 @media (max-width:1120px)
         .vacio
