@@ -16,6 +16,8 @@ export class TrabajosComponent implements OnInit {
   trabajoseleccionado:trabajo|null = null;
   trabajosdata!:trabajo[];
   quejadato:boolean = false;
+
+  ficheroestado:boolean = false
   
   constructor( private _fb:FormBuilder , private _v:ValidadoresService , private _td:TraerdataService , private _hb:HeartbeatService ){
     this.forma = this._fb.group({
@@ -30,22 +32,24 @@ export class TrabajosComponent implements OnInit {
     this.getrabajo(true);
   }
 
+  getrabajo(exito:boolean){
+    if(exito){this._td.trabajosGET.subscribe(resp => this.trabajosdata = resp);this.quejadato = false};
+    this.trabajoseleccionado = null ; this.ficheroestado = false ;this.forma.reset();
+    if(!this._hb.latido()){sessionStorage.clear();window.location.reload()};
+  }
+
   fotoput(input:HTMLInputElement){
     if(input.files == null){return};
     const fichero = input.files[0];
-    this.forma.patchValue({foto:fichero});
-  }
-
-  getrabajo(exito:boolean){
-    if(exito){this._td.trabajosGET.subscribe(resp => this.trabajosdata = resp);this.quejadato = false};
-    this.trabajoseleccionado = null ; this.forma.reset();
-    if(!this._hb.latido()){sessionStorage.clear();window.location.reload()};
+    this.ficheroestado = true;
+    //this.forma.patchValue({foto:fichero});
+    this.forma.controls.foto.setValue(fichero);
   }
 
   editartrabajo(item:any){
     this.trabajoseleccionado = item;
-    const { foto , nombre , descripcion , estado , autor , eap ,eaptxt } = this.forma.controls;
     for(let x in this.forma.controls){this.forma.controls[x].setValue(item[x])};
+    this.ficheroestado = true;
   }
 
   formsave(){
@@ -58,8 +62,8 @@ export class TrabajosComponent implements OnInit {
         descripcion : valores.descripcion,
         estado : valores.estado,
         autor : valores.autor,
-        enlace : valores.eap,
-        enlacetxt : valores.eaptxt
+        enlace : valores.eap || "",
+        enlacetxt : valores.eaptxt || ""
       };
       let formulario = new FormData();
       formulario.append('id',id);
@@ -77,7 +81,7 @@ export class TrabajosComponent implements OnInit {
     }
   }
 
-  formclean(){ this.trabajoseleccionado = null ; this.quejadato = false ; this.forma.reset(); };
+  formclean(){ this.trabajoseleccionado = null ; this.quejadato = false ; this.ficheroestado = false ; this.forma.reset(); };
 
   formerase(){
     if(this.trabajoseleccionado == null){this.quejadato = true ; return};

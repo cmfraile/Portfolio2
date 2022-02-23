@@ -21,7 +21,8 @@
                             formControlName="estado">
                 </mat-form-field>
                 <!--Boton de meter foto-->
-                <button type="button" mat-raised-button color="accent" (click)="fileInput.click()">Foto</button>
+                <button *ngIf="ficheroestado" type="button" mat-raised-button color="accent" (click)="fileInput.click()">Foto</button>
+                <button *ngIf="!ficheroestado" type="button" mat-raised-button color="primary" (click)="fileInput.click()">Foto</button>
                 <input hidden (change)="fotoput(fileInput)" #fileInput type="file">
                 <mat-form-field appearance="outline" class="dato descripcion">
                     <mat-label>descripción</mat-label>
@@ -34,6 +35,12 @@
                     <input  matInput
                             type="text"
                             formControlName="eap">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="dato enlace">
+                    <mat-label>texto de enlace</mat-label>
+                    <input  matInput
+                            type="text"
+                            formControlName="eaptxt">
                 </mat-form-field>
                 <button class="botonaccion" title="Guardar" (click)="formsave()"><i class="fas fa-pencil-alt"></i></button>
                 <button class="botonaccion" title="Limpiar" (click)="formclean()" ><i class="fas fa-eraser"></i></button>
