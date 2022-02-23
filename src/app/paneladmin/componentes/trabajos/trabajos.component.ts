@@ -26,8 +26,8 @@ export class TrabajosComponent implements OnInit {
       descripcion:[null,[Validators.minLength(5),Validators.required]],
       estado:[null,[Validators.min(2000),Validators.required]],
       autor:[null,[Validators.minLength(5),Validators.required]],
-      eap:[null],
-      eaptxt:[null]
+      eap:[""],
+      eaptxt:[""]
     });
     this.getrabajo(true);
   }
@@ -42,6 +42,7 @@ export class TrabajosComponent implements OnInit {
     if(input.files == null){return};
     const fichero = input.files[0];
     this.ficheroestado = true;
+    console.log(fichero);
     //this.forma.patchValue({foto:fichero});
     this.forma.controls.foto.setValue(fichero);
   }
