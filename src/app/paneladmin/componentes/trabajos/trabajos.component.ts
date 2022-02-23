@@ -19,7 +19,7 @@ export class TrabajosComponent implements OnInit {
   trabajosdata!:trabajo[];
   quejadato:boolean = false;
 
-  ficheroestado:boolean = false
+  fichero:File|undefined;
   
   constructor( private _fb:FormBuilder , private _v:ValidadoresService , private _td:TraerdataService , private _hb:HeartbeatService ){
     this.forma = this._fb.group({
@@ -36,31 +36,26 @@ export class TrabajosComponent implements OnInit {
 
   getrabajo(exito:boolean){
     if(exito){this._td.trabajosGET.subscribe(resp => this.trabajosdata = resp);this.quejadato = false};
-    this.trabajoseleccionado = null ; this.ficheroestado = false ;this.forma.reset();
+    this.trabajoseleccionado = null;this.fichero = undefined;this.forma.reset();
     if(!this._hb.latido()){sessionStorage.clear();window.location.reload()};
   }
 
   fotoput(input:HTMLInputElement){
     if(input.files == null){return};
-    const fichero = input.files[0];
-    this.ficheroestado = true;
-    console.log(fichero);
-    //this.forma.patchValue({foto:fichero});
-    this.forma.controls.foto.setValue(fichero);
+    this.fichero = input.files[0];
   }
 
   editartrabajo(item:any){
     this.trabajoseleccionado = item;
     for(let x in this.forma.controls){this.forma.controls[x].setValue(item[x])};
-    this.ficheroestado = true;
   }
 
   formsave(){
     if(this.trabajoseleccionado !== null){
       const { _id:id } = this.trabajoseleccionado;
-      const valores = this.forma.value
-      const data:any = {
-        foto : valores.foto,
+      const valores = this.forma.value;
+      let data:any = {
+        nombre : valores.nombre,
         proyecto : valores.nombre,
         descripcion : valores.descripcion,
         estado : valores.estado,
@@ -68,11 +63,13 @@ export class TrabajosComponent implements OnInit {
         enlace : valores.eap || "",
         enlacetxt : valores.eaptxt || ""
       };
+      if(this.fichero !== undefined){data.foto = this.fichero};
       let formulario = new FormData();
       formulario.append('id',id);
       for(let x in data){formulario.append(`${x}`,data[x])};
       this._td.trabajosPUT(formulario).subscribe(resp => {this.getrabajo(true)},err => {this.getrabajo(false)});
     } else {
+      if(this.fichero){this.forma.controls.foto.setValue(this.fichero)}; 
       if(this.forma.invalid){console.log('formulario invalido') ; return };
       const { foto , nombre , descripcion , estado , autor , eap , eaptxt } = this.forma.value;
       const consulta:any = { foto,estado,descripcion,autor,
@@ -84,7 +81,7 @@ export class TrabajosComponent implements OnInit {
     }
   }
 
-  formclean(){ this.trabajoseleccionado = null ; this.quejadato = false ; this.ficheroestado = false ; this.forma.reset(); };
+  formclean(){ this.trabajoseleccionado = null ; this.quejadato = false ; this.fichero = undefined ; this.forma.reset(); };
 
   formerase(){
     if(this.trabajoseleccionado == null){this.quejadato = true ; return};

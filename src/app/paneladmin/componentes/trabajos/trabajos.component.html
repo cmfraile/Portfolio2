@@ -21,8 +21,8 @@
                             formControlName="estado">
                 </mat-form-field>
                 <!--Boton de meter foto-->
-                <button *ngIf="ficheroestado" type="button" mat-raised-button color="accent" (click)="fileInput.click()">Foto</button>
-                <button *ngIf="!ficheroestado" type="button" mat-raised-button color="primary" (click)="fileInput.click()">Foto</button>
+                <button *ngIf="fichero !== undefined" type="button" mat-raised-button color="accent" (click)="fileInput.click()">Foto</button>
+                <button *ngIf="fichero == undefined" type="button" mat-raised-button color="primary" (click)="fileInput.click()">Foto</button>
                 <input hidden (change)="fotoput(fileInput)" #fileInput type="file">
                 <mat-form-field appearance="outline" class="dato descripcion">
                     <mat-label>descripción</mat-label>
