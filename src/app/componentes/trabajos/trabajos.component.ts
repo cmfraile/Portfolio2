@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trabajo } from 'src/app/interfaces/todainterfaz';
 import { TraerdataService } from 'src/app/servicios/traerdata.service';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-trabajos',

@@ -12,6 +12,8 @@ import { ValidadoresService } from '../../servicios/validadores.service';
 })
 export class TrabajosComponent implements OnInit {
 
+  //SE VIENE CARPINTERIA
+
   forma:FormGroup;
   trabajoseleccionado:trabajo|null = null;
   trabajosdata!:trabajo[];
