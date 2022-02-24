@@ -8,7 +8,11 @@ import * as di from '../interfaces/todainterfaz';
 })
 export class TraerdataService {
 
-  baseURL:string='http://localhost:8000/api';
+  constructor( private _hc:HttpClient ){
+    console.log(this.baseURL);
+  }
+
+  baseURL:string = 'http://localhost:8000'
   
   headermaster = new HttpHeaders({token:sessionStorage.getItem('token') || ""});
   ntairGET = this._hc.get<di.ntair[]>(`${this.baseURL}/ntair`).pipe(map(resp => resp[0]));
@@ -82,7 +86,5 @@ export class TraerdataService {
       {token:sessionStorage.getItem('token') || "",id}
     )});
   }
-  
-  constructor( private _hc:HttpClient ){}
 
 }
