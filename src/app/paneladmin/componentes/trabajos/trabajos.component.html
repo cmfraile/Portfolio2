@@ -56,11 +56,11 @@
                     <div class="foto" style="background-image: url({{dato.foto}});"></div>
                 </div>
                 <div class="grupodatostring">
-                    <div class="nombre">{{dato.proyecto}}</div>
+                    <div class="nombre">{{dato.proyecto.substring(0,10)}}...</div>
                     <div class="anio">{{dato.estado}}</div>
-                    <div class="descripcion">{{dato.descripcion}}</div>
+                    <div class="descripcion">{{dato.descripcion.substring(0,10)}}...</div>
                     <div class="autor">{{dato.autor}}</div>
-                    <div class="enlace">{{dato.enlace}}</div>
+                    <div class="enlace">{{dato.enlace.substring(0,10)}}...</div>
                 </div>
             </div>
         </div>

@@ -26,7 +26,7 @@ export class TrabajosComponent implements OnInit {
       foto:[null,[Validators.required,_v.validaprueba()]],
       nombre:[null,[Validators.minLength(5),Validators.required]],
       descripcion:[null,[Validators.minLength(5),Validators.required]],
-      estado:[null,[Validators.min(2000),Validators.required]],
+      estado:[""],
       autor:[null,[Validators.minLength(5),Validators.required]],
       eap:[""],
       eaptxt:[""]
@@ -51,13 +51,14 @@ export class TrabajosComponent implements OnInit {
   }
 
   formsave(){
+    console.log(this.forma);
     if(this.trabajoseleccionado !== null){
       const { _id:id } = this.trabajoseleccionado;
       const valores = this.forma.value;
       let data:any = {
         nombre : valores.nombre,
         proyecto : valores.nombre,
-        descripcion : valores.descripcion,
+        descripcion : valores.descripcion || "",
         estado : valores.estado,
         autor : valores.autor,
         enlace : valores.eap || "",

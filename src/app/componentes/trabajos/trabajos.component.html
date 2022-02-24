@@ -7,7 +7,10 @@
                 <div class="releaseordev">{{curro.estado}}</div>
                 <div class="descripcion">{{curro.descripcion}}</div>
                 <div class="autor">{{curro.autor}}</div>
-                <div class="link"><a href="{{curro.enlace || ''}}">{{curro.enlacetxt || ''}}</a></div>
+
+                <div *ngIf="curro.enlace" class="link"><a href="{{curro.enlace || ''}}">{{curro.enlacetxt || ''}}</a></div>
+                <div *ngIf="!curro.enlace" class="link"></div>
+                
             </div>
         </div>
     </div>
