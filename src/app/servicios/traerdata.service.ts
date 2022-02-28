@@ -2,17 +2,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators'
 import * as di from '../interfaces/todainterfaz';
+import { environment as pen } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TraerdataService {
 
-  constructor( private _hc:HttpClient ){
-    console.log(this.baseURL);
-  }
+  constructor( private _hc:HttpClient ){}
 
-  baseURL:string = 'http://localhost:8000'
+  baseURL:string = pen.baseURL || 'http://localhost:8000' ;
   
   headermaster = new HttpHeaders({token:sessionStorage.getItem('token') || ""});
   ntairGET = this._hc.get<di.ntair[]>(`${this.baseURL}/ntair`).pipe(map(resp => resp[0]));
