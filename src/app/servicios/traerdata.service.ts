@@ -10,7 +10,7 @@ export class TraerdataService {
 
   constructor( private _hc:HttpClient ){}
 
-  baseURL:string = "http://localhost:13017/api"
+  baseURL:string = "https://cmfg.dev/api"
   
   headermaster = new HttpHeaders({token:sessionStorage.getItem('token') || ""});
   ntairGET = this._hc.get<di.ntair[]>(`${this.baseURL}/ntair`).pipe(map(resp => resp[0]));
