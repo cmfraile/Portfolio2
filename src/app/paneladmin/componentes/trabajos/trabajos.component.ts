@@ -46,8 +46,8 @@ export class TrabajosComponent implements OnInit {
   }
 
   editartrabajo(item:any){
-    this.trabajoseleccionado = item;
-    for(let x in this.forma.controls){this.forma.controls[x].setValue(item[x])};
+    let item2 = {...item} ; item2['nombre'] = item2.proyecto; delete item2.proyecto;
+    for(let x in this.forma.controls){this.forma.controls[x].setValue(item2[x])};
   }
 
   formsave(){
