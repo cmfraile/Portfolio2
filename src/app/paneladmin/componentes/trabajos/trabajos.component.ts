@@ -46,8 +46,9 @@ export class TrabajosComponent implements OnInit {
   }
 
   editartrabajo(item:any){
-    let item2 = {...item} ; item2['nombre'] = item2.proyecto; delete item2.proyecto;
-    for(let x in this.forma.controls){this.forma.controls[x].setValue(item2[x])};
+    console.log(item);
+    for(let x in this.forma.controls){this.forma.controls[x].setValue(item[x])};
+    //PENDIENTE DE ARREGLAR
   }
 
   formsave(){
@@ -57,7 +58,7 @@ export class TrabajosComponent implements OnInit {
       const valores = this.forma.value;
       let data:any = {
         nombre : valores.nombre,
-        proyecto : valores.nombre,
+        proyecto : valores.proyecto,
         descripcion : valores.descripcion || "",
         estado : valores.estado,
         autor : valores.autor,

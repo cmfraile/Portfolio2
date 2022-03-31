@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators'
+import { map , tap } from 'rxjs/operators'
 import * as di from '../interfaces/todainterfaz';
 
 @Injectable({

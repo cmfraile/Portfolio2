@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "ubuntu";
+    src: local("ubuntu");
+    src: url('src/assets/fonts/Ubuntu-Light.ttf');
+}
+
+* {
+    font-family: ubuntu;
+}
