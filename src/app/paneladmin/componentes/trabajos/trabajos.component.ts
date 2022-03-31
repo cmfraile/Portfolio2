@@ -46,9 +46,14 @@ export class TrabajosComponent implements OnInit {
   }
 
   editartrabajo(item:any){
-    console.log(item);
-    for(let x in this.forma.controls){this.forma.controls[x].setValue(item[x])};
-    //PENDIENTE DE ARREGLAR
+    this.trabajoseleccionado = item;
+    const controles = this.forma.controls;
+    controles.nombre.setValue(item.proyecto);
+    controles.eap.setValue(item.enlace)
+    controles.eaptxt.setValue(item.enlacetxt);
+    controles.estado.setValue(item.estado);
+    controles.descripcion.setValue(item.descripcion);
+    controles.autor.setValue(item.autor);
   }
 
   formsave(){
@@ -57,8 +62,7 @@ export class TrabajosComponent implements OnInit {
       const { _id:id } = this.trabajoseleccionado;
       const valores = this.forma.value;
       let data:any = {
-        nombre : valores.nombre,
-        proyecto : valores.proyecto,
+        proyecto : valores.nombre,
         descripcion : valores.descripcion || "",
         estado : valores.estado,
         autor : valores.autor,
