@@ -23,15 +23,16 @@
     min-height: 100vh
 
 .about,.perfil,.trabajos,.rrss
-    animation: test
     animation-fill-mode: forwards
     animation-duration: 3s
+
 @keyframes test
     100%
         background-image: url("../assets/img/fotos/dragon.jpg")
 
 .about
-    background-image: url("../assets/img/fotos/dragon.jpg")
+    animation: test !important
+    background: black
 .perfil
     background-image: url("../assets/img/fotos/lobo.jpg")
 .trabajos

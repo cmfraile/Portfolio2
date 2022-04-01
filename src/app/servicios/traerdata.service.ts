@@ -13,7 +13,7 @@ export class TraerdataService {
   }
 
   fallospiner = false;
-  baseURL:string = "https://cmfg.dev/apia"
+  baseURL:string = "https://cmfg.dev/api"
   
   headermaster = new HttpHeaders({token:sessionStorage.getItem('token') || ""});
   ntairGET = this._hc.get<di.ntair[]>(`${this.baseURL}/ntair`).pipe(map(resp => resp[0]));
