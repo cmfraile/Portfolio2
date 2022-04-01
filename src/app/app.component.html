@@ -1,9 +1,11 @@
 <!-- <div class="padraso" style="background-image: url(../assets/img/fotos/dragon.jpg);"> -->
 <!-- <div class="padraso {{fondoclase}}"> -->
-<div class="padraso {{fondoclase}}">
+<div *ngIf=!_td.fallospiner class="padraso {{fondoclase}}">
     <div class="container">
-    <router-outlet *ngIf="true"></router-outlet>
-    <div *ngIf="false" class="spinner"><mat-spinner color="warn"></mat-spinner></div>
+    <router-outlet></router-outlet>
     </div>
     <app-navegacion [ngClass]="{'nav':true,'funado':adminav}" ></app-navegacion>
+</div>
+<div *ngIf=_td.fallospiner class="padraso {{fondoclase}}">
+    <div class="spinner"><mat-spinner color="warn"></mat-spinner></div>
 </div>

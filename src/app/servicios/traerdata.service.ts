@@ -8,9 +8,12 @@ import * as di from '../interfaces/todainterfaz';
 })
 export class TraerdataService {
 
-  constructor( private _hc:HttpClient ){}
+  constructor( private _hc:HttpClient ){
+    this.ntairGET.subscribe({next:() => {},error:() => {this.fallospiner = true;}});
+  }
 
-  baseURL:string = "https://cmfg.dev/api"
+  fallospiner = false;
+  baseURL:string = "https://cmfg.dev/apia"
   
   headermaster = new HttpHeaders({token:sessionStorage.getItem('token') || ""});
   ntairGET = this._hc.get<di.ntair[]>(`${this.baseURL}/ntair`).pipe(map(resp => resp[0]));

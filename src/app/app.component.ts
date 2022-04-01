@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FondoService } from './servicios/fondo.service';
+import { TraerdataService } from './servicios/traerdata.service';
 
 
 
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit{
   fondoclase:string = "";
   adminav:boolean = false;
 
-  constructor(private _fs:FondoService,private _r:Router){
+  constructor(private _fs:FondoService,private _r:Router,public _td:TraerdataService){
     //this._fs.sub$.subscribe(resp => this.fondoclase = resp);
     this._fs.sub$.subscribe(resp =>{
       this.fondoclase = resp;
