@@ -1,6 +1,6 @@
 <div class="row perfilc">
     <div class="col contenido">
-        <h3>Experiencia profesional</h3>
+        <h3>EXPERIENCIA PROFESIONAL:</h3>
         <div class="tarjetaxp" *ngFor="let dato of experiencia" >
             <div class="puesto">{{dato.puesto}}</div>
             <div class="ano">{{dato.year}}</div>
@@ -11,13 +11,13 @@
     </div>
     <div class="col vacio"></div>
     <div class="col contenido formaciongrupo">
-        <h3>formación académica</h3>
+        <h3>FORMACIÓN ACADÉMICA:</h3>
         <div class="tarjetafor" *ngFor="let dato of formacion" >
             <div class="formacion">{{dato.materia}}</div>
             <div class="periodo">{{dato.periodo | periodopipe}}</div>
             <div class="lugar">{{dato.institucion}}</div>
         </div>
-        <h3>Datos de interes</h3>
+        <h3>DATOS DE INTERÉS:</h3>
         <div class="tarjetainteres">
             <div class="dato" *ngFor="let dato of dinteres">{{dato.dato}}</div>
         </div>
