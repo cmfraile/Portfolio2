@@ -14,7 +14,6 @@ export class FondoService {
   desbarra(cadena:string){
     let caso!:string;
     if(cadena == "/"){caso = "about"} else {caso = cadena.replace(/[/]/gi,'')};
-    console.log(caso);
     return caso;
   }
 

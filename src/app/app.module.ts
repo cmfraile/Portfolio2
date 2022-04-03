@@ -33,7 +33,7 @@ const routes: Routes = [
     TrabajosComponent,
     RrssComponent,
     PeriodopipePipe,
-    MesespiePipe
+    MesespiePipe,
   ],
   imports: [
     BrowserModule,
