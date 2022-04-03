@@ -37,14 +37,16 @@ export class AppComponent implements OnInit{
        let anadir = (this.bgobj.ancho) ? "-sujeto.jpg" : ".jpg";
        if(this.bgobj.primera){
          this.bgobj.primera = false;
-         this.bgobj.antes = `${this.bgobj.antes}/${x}${anadir}` ;
-         this.bgobj.despues = `${this.bgobj.despues}/${x}${anadir}` ;
+         this.bgobj.antes = `${this.bgobj.antes}${x}${anadir}` ;
+         this.bgobj.despues = `${this.bgobj.despues}${x}${anadir}` ;
         }else{
           this.bgobj.antes = this.bgobj.despues;
           this.bgobj.despues = `${this.bgobj.despues}/${x}${anadir}`;
         }
       })
    ).subscribe(console.log);
+
+   console.log(this.bgobj)
 
   }
 
