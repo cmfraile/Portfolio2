@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { fromEvent } from 'rxjs';
 import { FondoService } from 'src/app/servicios/fondo.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navegacion',
@@ -9,7 +11,15 @@ import { FondoService } from 'src/app/servicios/fondo.service';
 })
 export class NavegacionComponent implements OnInit{
   
-  constructor(private _r:Router , private _fs:FondoService){}
+  cambio = false
+  
+  constructor(private _r:Router , private _fs:FondoService){
+    fromEvent(window,'resize').pipe(
+      map((x:any) => {
+        if(!this.cambio){this.cambio = true ; return x}
+      })
+    ).subscribe(() => {console.log("WHACK")})
+  }
 
   ngOnInit(): void {
     setTimeout(() => {
