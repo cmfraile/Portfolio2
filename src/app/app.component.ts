@@ -30,9 +30,10 @@ export class AppComponent implements OnInit{
       antes: this.urlimgconst,
       despues: this.urlimgconst
     }
-   
+
     this._fs.sub$.pipe(
      map((x:string) => {
+       this.bgobj.ancho = (window.innerWidth >= 1120) ? true : false;
        (x == 'admin') ? this.adminav = true : this.adminav = false;
        let anadir = (!this.bgobj.ancho) ? "-sujeto.jpg" : ".jpg";
        if(this.bgobj.primera){
@@ -41,12 +42,10 @@ export class AppComponent implements OnInit{
          this.bgobj.despues = `${this.urlimgconst}${x}${anadir}` ;
         }else{
           this.bgobj.antes = this.bgobj.despues;
-          this.bgobj.despues = `${this.urlimgconst}/${x}${anadir}`;
+          this.bgobj.despues = `${this.urlimgconst}${x}${anadir}`;
         }
       })
-   ).subscribe();
-
-   console.log(this.bgobj)
+   ).subscribe(() => {console.clear() ; console.log({antes:this.bgobj.antes,despues:this.bgobj.despues})});
 
   }
 

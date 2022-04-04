@@ -16,5 +16,5 @@ export class FondoService {
     if(cadena == "/"){caso = "about"} else {caso = cadena.replace(/[/]/gi,'')};
     return caso;
   }
-  
+
 }
