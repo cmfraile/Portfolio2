@@ -22,7 +22,7 @@ export class FondoService {
   degradarnext = () => {
     this.degradarcontador = 0
     const intervalo = setInterval(() => {
-      this.degradarcontador+=0.01
+      this.degradarcontador+=0.01;
       if(this.degradarcontador >= 1){clearInterval(intervalo)}
     },4)
   }
