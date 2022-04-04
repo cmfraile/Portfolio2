@@ -1,16 +1,5 @@
 <!-- <div class="padraso" style="background-image: url(../assets/img/fotos/dragon.jpg);"> -->
 <!-- <div class="padraso {{fondoclase}}"> -->
-
-<!--
-<style>
-    @keyframes prueba {
-        0% {background-image: 'url('+ bgobj.antes +')';}
-        100% {background-image: url({{bgobj.despues}});}
-    }
-    .padraso {animation: prueba;animation-duration: 2s;animation-fill-mode: forwards;}
-</style>
--->
-
 <div
 [style.background-image]="'url('+ bgobj.despues +')'"
 *ngIf=!_td.fallospiner class="padraso">
