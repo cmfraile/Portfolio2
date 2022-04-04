@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FondoService } from 'src/app/servicios/fondo.service';
 
 @Component({
   selector: 'app-rrss',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RrssComponent implements OnInit{
   
-  constructor(){}
+  constructor( public _f:FondoService ){}
 
   ngOnInit(): void {}
 
