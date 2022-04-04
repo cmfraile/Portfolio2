@@ -4,8 +4,6 @@ import { FondoService } from './servicios/fondo.service';
 import { TraerdataService } from './servicios/traerdata.service';
 import { map } from 'rxjs/operators';
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -26,9 +24,7 @@ export class AppComponent implements OnInit{
 
     this.bgobj = {
       ancho: (window.innerWidth >= 1120) ? true : false,
-      primera: true,
-      antes: this.urlimgconst,
-      despues: this.urlimgconst
+      foto: ''
     }
 
     this._fs.sub$.pipe(
@@ -36,16 +32,9 @@ export class AppComponent implements OnInit{
        this.bgobj.ancho = (window.innerWidth >= 1120) ? true : false;
        (x == 'admin') ? this.adminav = true : this.adminav = false;
        let anadir = (!this.bgobj.ancho) ? "-sujeto.jpg" : ".jpg";
-       if(this.bgobj.primera){
-         this.bgobj.primera = false;
-         this.bgobj.antes = `${this.urlimgconst}${x}${anadir}` ;
-         this.bgobj.despues = `${this.urlimgconst}${x}${anadir}` ;
-        }else{
-          this.bgobj.antes = this.bgobj.despues;
-          this.bgobj.despues = `${this.urlimgconst}${x}${anadir}`;
-        }
+       this.bgobj.foto = `${this.urlimgconst}${x}${anadir}`;
       })
-   ).subscribe(() => {console.clear() ; console.log({antes:this.bgobj.antes,despues:this.bgobj.despues})});
+   ).subscribe();
 
   }
 
