@@ -32,6 +32,10 @@ export class AppComponent implements OnInit{
        this.bgobj.ancho = (window.innerWidth >= 1120) ? true : false;
        (x == 'admin') ? this.adminav = true : this.adminav = false;
        let anadir = (!this.bgobj.ancho) ? "-sujeto.jpg" : ".jpg";
+
+       //Aqui añadimos la carpinteria que hace el fondo estático:
+       x = "about"
+
        this.bgobj.foto = `${this.urlimgconst}${x}${anadir}`;
       })
    ).subscribe();
