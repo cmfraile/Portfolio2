@@ -34,7 +34,7 @@ export class AppComponent implements OnInit{
        let anadir = (!this.bgobj.ancho) ? "-sujeto.jpg" : ".jpg";
 
        //Aqui añadimos la carpinteria que hace el fondo estático:
-       x = "about"
+       //x = "about"
 
        this.bgobj.foto = `${this.urlimgconst}${x}${anadir}`;
       })
